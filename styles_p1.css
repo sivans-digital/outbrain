@@ -1,0 +1,113 @@
+#page1 {
+    height: 100%;
+    margin: 0px;
+}
+
+#page1.active ~ #header {
+    display: none;
+}
+
+#page1.active ~ #logo {
+    display: none;
+}
+
+
+#page1 h1 {
+    font-family: 'Audiowide', cursive;
+    text-transform: uppercase;
+    color: var(--main-color);
+    position: absolute;
+    top: 5%; /* 10% from the top of the app container */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    font-size: 2em;
+    text-align: center;
+    line-height: 1.5;
+    box-sizing: border-box; /* Ensure padding or borders don't affect the width */
+}
+#page1 h3 {
+    margin-top:25%;
+    width: 80%;
+    font-size: 1em;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team-selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    position: relative;
+}
+
+.team-card {
+    width: 250px;
+    margin: 20px -30px; /* Overlap the cards */
+    border: 0;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+}
+
+.team-card img {
+    width: 100%;
+}
+
+.team-card:first-child {
+    transform: rotate(-10deg);
+}
+
+.team-card:last-child {
+    transform: rotate(10deg);
+}
+
+.team-card.selected {
+    transform: scale(1.1) rotate(0deg);
+    z-index: 2;
+    box-shadow: 0 0 20px 10px rgba(255, 239, 0, 1);
+    border-radius: 15px;
+}
+
+.team-card:first-child {
+    transform: rotate(-10deg);
+}
+
+.team-card:last-child {
+    transform: rotate(10deg);
+}
+
+.team-card.selected {
+    transform: scale(1.1) rotate(0deg); 
+    z-index: 2;
+    box-shadow: 0 0 20px 10px rgba(255, 239, 0, 1);
+    border-radius: 15px;
+}
+
+.language-selection {
+    display: flex;
+    justify-content: center;
+    gap: 10%; /* Add 5% space between language buttons */
+    margin-bottom: 5%; /* Ensure 5% space from the bottom */
+}
+
+.lang-button {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Make buttons round */
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+    background-color: #1B2652;
+    color: white;
+    font-size: 1rem;
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0; /* Remove other margins */
+    z-index: 10; /* Ensure it's on top */
+}

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Outbrain | Be the Headline</title>
+        <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="styles_p1.css">
+        <link rel="icon" href="images/favicon.svg" type="image/x-icon">
+    </head>
+    <body>
+        <div id="app">
+            <div id="header">
+                <img id="logo" src="images/logo.png">
+            </div>
+            <div align="center">
+                <!-- Page 1: Start Screen -->
+                <div id="page1" class="page active" data-index="1">
+                    <h1>Be the Headline<br>見出しになる</h1>
+                    <h3>Choose a team & create your unique player card<br>チームを選んであなたのユニークな<br>プレイヤーカードを作成する</h3>
+
+                    <div class="team-selection">
+                        <div class="team-card" id="outbrainTeam">
+                            <img src="images/card_outbrain.png">
+                        </div>
+                        <div class="team-card" id="onyxTeam">
+                            <img src="images/card_onyx.png">
+                        </div>
+                    </div>
+                    <div class="language-selection">
+                        <button id="englishButton" class="lang-button">Start<br>🇺🇸</button>
+                        <button id="japaneseButton" class="lang-button">スタート<br>🇯🇵</button>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const page1 = document.getElementById('page1');
+                            const header = document.getElementById('header');
+                            const logo = document.getElementById('logo');
+
+                            if (page1.classList.contains('active')) {
+                                header.style.display = 'none';
+                                logo.style.display = 'none';
+                            }
+                        });
+                    </script>
+                </div>
+
+                <!-- Page 2: Permission to Take Photo -->
+                <div id="page2"  class="page" data-index="2">
+
+                    <h1 data-translate="permissionPhoto"></h1>
+                    <div class="language-selection">
+                        <button id="yesButton" data-translate="yes"></button>
+                        <button id="noButton" data-translate="no"></button>
+                    </div>
+                </div>
+
+                <!-- Page 3: Camera Capture -->
+                <div id="page3" class="page"data-index="3">
+                    <h1 data-translate="pose">Pose for the camera!</h1>
+                    <h3 data-translate="poseinstruction">Align yourself in the frame and get ready for the countdown.</h3>
+                    <div id="videoContainer" style="position: relative; display: inline-block;">
+                        <video id="video" autoplay></video>
+                        <div id="countdownOverlay" style="display: none;">
+                            <span id="countdownText" style="text-align: center">5</span>
+                        </div>
+                    </div>
+                    <button id="captureButton" class="position-bottom">Take Photo</button>
+                </div>
+
+                <!-- Page 4: Name Input -->
+                <div id="page4" class="page" data-index="4">
+                    <h1 data-translate="name"></h1>
+                    <input type="text" id="name" placeholder="Lara Croft" maxlength="25" required>
+                    <button id="next4" data-translate="next" class="next-button position-bottom">Next</button>
+                </div>
+
+
+                <!-- Page 5: Gender Selection -->
+                <div id="page5" class="page" data-index="5">
+                    <h1 data-translate="gender">Select Your Gender</h1>
+                    <button id="maleButton" data-translate="male">Male</button>
+                    <button id="femaleButton" data-translate="female">Female</button>
+                    <button id="otherButton" data-translate="other">Other</button>
+                </div>
+
+                <!-- Page 6: Q1 -->
+                <div id="page6" class="page" data-index="6">
+                    <h1 data-translate="Q1Prompt"></h1>
+                    <button id="networkButton" data-translate="Q1A1">Network with others</button>
+                    <button id="portfolioButton" data-translate="Q1A2">Build a strong portfolio</button>
+                    <button id="trendsButton" data-translate="Q1A3">Stay updated on trends</button>
+                    <button id="collabButton" data-translate="Q1A4">Collaborate with others</button>
+                </div>
+
+                <!-- Page 7: Interests Input -->
+                <div id="page7" class="page" data-index="7">
+                    <h1 data-translate="like"></h1>
+                    <input type="text" id="interest" placeholder="" maxlength="25" required data-translate-placeholder="likePlaceholder">
+                    <button id="next" data-translate="next" class="next-button position-bottom">Next</button>
+                </div>
+
+                <!-- Page 8: Sample Q1 -->
+                <div id="page8" class="page" data-index="8">
+                    <h1 data-translate="Q2Prompt"></h1>
+                    <button id="Q2A1" data-translate="Q2A1">XXX</button>
+                    <button id="Q2A2" data-translate="Q2A2">XXX</button>
+                    <button id="Q2A3" data-translate="Q2A3">XXX</button>
+                    <button id="Q2A4" data-translate="Q2A4">CXXX</button>
+                </div>
+                
+                <!-- LAST Q - MUST BE TEXT INPUT-->
+                <div id="lastQ" class="page" data-index="9">
+                    <h1 data-translate="lastQPrompt"></h1>
+                    <input type="text" id="interest" placeholder="" maxlength="25" required data-translate-placeholder="likePlaceholder">
+                    <button id="submit" data-translate="submit">Submit</button>
+                </div>
+
+                <!-- Loading Screen -->
+                <div id="pageLoading" class="page" data-index="10">
+                    <h1 data-translate="generating">Generating your personalized card...</h1>
+                    <h3>We will work on a solution to shorten the<br>wait time once we have all the questions</h3>
+                    <div class="container">
+                        <div class="box">
+                            <div class="loader1"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page Last: Result - Displaying the Card -->
+                <div id="pageLast" class="page" data-index="11">
+                    <div id="card">
+                        <div id="cardName"></div> <!-- This is where the name will be displayed -->
+                        <img id="generatedImage">
+                        <p id="tagline">Outbrain Gaming News</p>
+                        <h2 id="headline">Your Headline Here</h2>
+                        <img id="cardLogo" src="images/logo_white.svg" alt="Card Logo">
+                    </div>
+                    <div id="emailContainer">
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div id="buttonContainer">
+                        <button id="downloadButton">Send My Card</button>
+                    </div>
+                </div>
+
+                <!-- On-Screen Keyboard -->
+                <div id="keyboard" style="display: none;">
+                    <div class="keyboard-row">
+                        <button class="key">Q</button>
+                        <button class="key">W</button>
+                        <button class="key">E</button>
+                        <button class="key">R</button>
+                        <button class="key">T</button>
+                        <button class="key">Y</button>
+                        <button class="key">U</button>
+                        <button class="key">I</button>
+                        <button class="key">O</button>
+                        <button class="key">P</button>
+                    </div>
+                    <div class="keyboard-row">
+                        <button class="key">A</button>
+                        <button class="key">S</button>
+                        <button class="key">D</button>
+                        <button class="key">F</button>
+                        <button class="key">G</button>
+                        <button class="key">H</button>
+                        <button class="key">J</button>
+                        <button class="key">K</button>
+                        <button class="key">L</button>
+                    </div>
+                    <div class="keyboard-row">
+                        <button class="key">Z</button>
+                        <button class="key">X</button>
+                        <button class="key">C</button>
+                        <button class="key">V</button>
+                        <button class="key">B</button>
+                        <button class="key">N</button>
+                        <button class="key">M</button>
+                        <button class="key">←</button> <!-- Backspace -->
+                    </div>
+                    <div class="keyboard-row">
+                        <button class="key" style="width: 100px;">Space</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Link to the JavaScript files -->
+        <script src="app.js"></script>
+        <script src="api.js"></script>
+        <script src="keyboard.js"></script>
+
+        <!-- English JSON data -->
+        <script id="en-json" type="application/json">
+{
+    "permissionPhoto": "Can we take a photo?",
+    "pose": "Pose for the camera!",
+    "poseinstruction": "Align yourself in the frame and get ready for the countdown",
+    "name": "Enter Your Name",
+    "next": "Next",
+    "gender": "Select Your Gender",
+    "male":"Male",
+    "female":"Female",
+    "other":"Other / Prefer not to say",
+    "Q1Prompt": "What's your best advice/nfor success?",
+    "Q1A1": "Network with others",
+    "Q1A2": "Build a strong portfolio",
+    "Q1A3": "Stay updated on trends",
+    "Q1A4": "Collaborate with others",
+    "Q2Prompt": "Sample question 1",
+    "Q2A1": "Sample answer 1",
+    "Q2A2": "Sample answer 2",
+    "Q2A3": "Sample answer 3",
+    "Q2A4": "Sample answer 4",
+    "lastQPrompt": "Sample last question \n(must be text input)",
+    "lastQA1": "Last sample answer 1",
+    "lastQA2": "Last sample answer 2",
+    "lastQA3": "Last sample answer 3",
+    "lastQA4": "Last sample answer 4",
+    "like": "Something you like?",
+    "likePlaceholder": "Cats, maybe?",
+    "yes": "Yes",
+    "no": "No",
+    "generating": "Generating your personalized card...",
+    "wait": "Please wait a moment ˖✧˖°☆'(>∀< )"
+
+}
+        </script>
+
+        <!-- Japanese JSON data -->
+        <script id="ja-json" type="application/json">
+{
+    "permissionPhoto": "写真を撮ることを\n許可しますか？",
+    "pose": "カメラの前でポーズを取ってください！",
+    "poseinstruction": "フレーム内に合わせて、\nカウントダウンの準備をしてください。",
+    "name": "あなたの名前を\n入力してください",
+    "next": "次へ",
+    "gender": "性別を選択してください",
+    "male":"男性",
+    "female":"女性",
+    "other":"その他 / 答えたくない",
+    "Q1Prompt": "成功するための\nアドバイスは何ですか？",
+    "Q1A1": "他の人とネットワークを築く",
+    "Q1A2": "強力なポートフォリオを作成する",
+    "Q1A3": "トレンドに遅れないようにする",
+    "Q1A4": "他の人とコラボレーションする",
+    "Q2Prompt": "サンプル質問1",
+    "Q2A1": "サンプル回答1",
+    "Q2A2": "サンプル回答2",
+    "Q2A3": "サンプル回答3",
+    "Q2A4": "サンプル回答4",
+    "lastQA1": "最後サンプル回答1",
+    "lastQA2": "最後サンプル回答2",
+    "lastQA3": "最後サンプル回答3",
+    "lastQA4": "最後サンプル回答4",
+    "lastQPrompt": "最後のサンプル質問\n（テキスト入力必須）",
+    "submit": "送信",
+    "like": "好きな物は？",
+    "likePlaceholder": "猫かな〜",
+    "yes": "はい",
+    "no": "いいえ",
+    "submit":"送信",
+    "generating": "あなたのカードを\n生成中です...",
+    "wait": "少々お待ちください ˖✧˖°☆(>∀< )"
+}
+        </script>
+
+    </body>
+</html>

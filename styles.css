@@ -1,0 +1,393 @@
+:root {
+    --main-color: #EE6513;
+}
+
+body {
+    font-family: 'Sofia Pro', 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #1B2652;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('images/BG.png');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+
+#app {
+    width: 100%;
+    max-width: 500px;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+}
+
+#header {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 90%; /* Make the header full width */
+    padding-bottom: 20px;
+    flex-shrink: 0; /* Ensure header doesn't shrink */
+}
+
+#header img {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+}
+
+
+#content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.page.active {
+    display: flex; 
+}
+
+#pageLast #card {
+    margin: auto;
+}
+
+button, input {
+    margin-top: 20px;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Headings and Text Styles */
+button {
+    font-family: 'Audiowide', cursive;
+    text-transform: uppercase;
+    margin: 10px 0;
+}
+
+h1 {
+    font-family: 'Audiowide', cursive;
+    text-transform: uppercase;
+    color: var(--main-color);
+    position: absolute;
+    top: 10%; /* 10% from the top of the app container */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    font-size: 2em;
+    text-align: center;
+    line-height: 1.5;
+    box-sizing: border-box; /* Ensure padding or borders don't affect the width */
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #1B2652;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #1B2652;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+h4 {
+    font-size: 1rem;
+    color: #1B2652;
+    margin-bottom: 20px;
+}
+
+
+/* Buttons */
+button {
+    display: block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+/* Input Fields */
+input {
+    background-color: #D9D9D9;
+    color: black;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#page2 button {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Make buttons round */
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+    background-color: var(--main-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0; /* Remove other margins */
+    z-index: 10; /* Ensure it's on top */
+}
+
+
+/* Countdown Overlay */
+#countdownOverlay {
+    display: none;
+}
+
+/*KEYBOARD*/
+
+#keyboard {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 5px;
+    background-color: #1B2652;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+    border-radius: 5px; /* Optional: add some border radius to make it look better */
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.key {
+    padding: 15px;
+    margin: 2px; /* Add a small margin to ensure keys don’t touch each other */
+    background-color: #1B2652;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1; /* Make the keys flexible to fill the row */
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding and border are included in the width/height */
+}
+
+.key:active {
+    background-color: #1B2652;
+}
+
+/* LOADER */
+
+.container {
+    text-align: center;
+    background-color: white;
+    overflow: hidden;
+}
+
+.box {
+    display: inline-block;
+    height: 200px;
+    width: 100%;
+    position: relative;
+    transition: all .2s ease;
+}
+
+#pageLoading {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* LOADER */
+
+.loader1 {
+    position: relative;
+    height: 80px;
+    width: 80px;
+    border-radius: 80px;
+    border: 3px solid var(--main-color);
+    top: calc(50% - 43px);
+    left: calc(50% - 43px);
+    transform-origin: 50% 50%;
+    animation: loader1 3s linear infinite;
+}
+
+.loader1:after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 20px;
+    width: 11px;
+    height: 11px;
+    border-radius: 10px;
+    background-color: var(--main-color); /* Remove 'solid' */
+}
+
+@keyframes loader1 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* Card Styling */
+
+#card {
+    width: 80%;
+    max-width: 450px;
+    aspect-ratio: 822 / 1122;
+    background-color: var(--main-color);
+    border-radius: 15px;
+    box-shadow: 0 0px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 30px auto;
+    color: white;
+    position: relative;
+}
+
+#cardName {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Audiowide', cursive;
+}
+
+#generatedImage {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+#tagline {
+    position: absolute;
+    top: 355px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: #FFEF9D;
+    font-family: Avenir, Arial, sans-serif;
+}
+
+#headline {
+    position: absolute;
+    top: 385px;
+    text-align: left;
+    font-size: 1.5rem;
+    font-family: Avenir, Arial, sans-serif;
+    color: white;
+}
+
+#cardLogo {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    height: auto;
+}
+
+/* Email and Button Containers */
+#emailContainer, #buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Camera Capture Styling */
+#videoContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+#countdownOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(27, 38, 82, 0.5);
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    border-radius: 15px;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Comfortaa:400,700,300);
+
+*,html{margin:0;padding:0}
+
+//variables
+$baseColor : #e74c3c;
+$fontColor : #fff;
+
+body{
+    background: $baseColor;
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+}
+svg{
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    display:inline-block;
+}
