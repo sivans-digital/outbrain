@@ -317,6 +317,7 @@ input {
     top: 385px;
     text-align: left;
     font-size: 1.5rem;
+    width: 90%;
     font-family: Avenir, Arial, sans-serif;
     color: white;
 }
