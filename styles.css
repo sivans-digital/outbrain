@@ -207,6 +207,7 @@ input {
     flex: 1; /* Make the keys flexible to fill the row */
     text-align: center;
     box-sizing: border-box; /* Ensure padding and border are included in the width/height */
+    white-space: pre-wrap;
 }
 
 .key:active {
