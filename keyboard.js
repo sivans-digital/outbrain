@@ -7,7 +7,7 @@ inputFields.forEach(input => {
     input.addEventListener('focus', function () {
     console.log('Input focused, Wanakana binding...');
         activeInput = this;
-        keyboard.style.display = 'block';
+        document.getElementById('keyboard').style.display = 'block';
 
         // Bind WanaKana to the focused input field for Japanese typing
         if (selectedLanguage === 'ja') {

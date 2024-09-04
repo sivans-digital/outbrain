@@ -1,3 +1,5 @@
+// Declare selectedLanguage globally
+var selectedLanguage = ''; // Ensure it's globally scoped
 document.addEventListener('DOMContentLoaded', function () {
     // Global variables for selected options
     let selectedTeam = '';
