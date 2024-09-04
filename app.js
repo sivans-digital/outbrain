@@ -3,15 +3,14 @@ var selectedLanguage = ''; // Ensure it's globally scoped
 document.addEventListener('DOMContentLoaded', function () {
     // Global variables for selected options
     let selectedTeam = '';
-    let selectedLanguage = ''; 
     let selectedGender = '';
     let selectedAdvice = '';
     let userName = '';
 
-    // Team selection handling
+   // Team selection handling
     const outbrainTeam = document.getElementById('outbrainTeam');
     const onyxTeam = document.getElementById('onyxTeam');
-
+    
     outbrainTeam.addEventListener('click', function () {
         selectedTeam = 'outbrain';
         highlightSelectedTeam(outbrainTeam, onyxTeam);
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Language selection handling
-    document.getElementById('englishButton').addEventListener('click', function () {
+   document.getElementById('englishButton').addEventListener('click', function () {
         if (selectedTeam) {
             selectedLanguage = 'en';
             loadLanguage(selectedLanguage);
@@ -57,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Please select a team first.');
         }
     });
+    
 
     function loadLanguage(language) {
         let jsonData;
