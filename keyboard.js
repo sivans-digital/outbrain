@@ -11,22 +11,18 @@ inputFields.forEach(input => {
         document.getElementById('keyboard').style.display = 'block';
 
         // Bind WanaKana to the focused input field for Japanese typing
-        if (selectedLanguage === 'ja' && !isWanakanaBound) {
+        if (selectedLanguage === 'ja') {
             wanakana.bind(activeInput, { IMEMode: true });
-            isWanakanaBound = true;  // Set the flag to true when bound
         }
     });
 
     input.addEventListener('blur', function () {
-        // Unbind WanaKana only if it was bound previously
-        if (selectedLanguage === 'ja' && isWanakanaBound) {
+        // Always unbind WanaKana on blur if the language is Japanese
+        if (selectedLanguage === 'ja') {
             wanakana.unbind(activeInput);
-            isWanakanaBound = false;  // Reset the flag after unbinding
         }
     });
 });
-
-
 const keys = document.querySelectorAll('.key');
 keys.forEach(key => {
     key.addEventListener('click', function () {
