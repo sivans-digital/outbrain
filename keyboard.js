@@ -2,6 +2,8 @@
 const keyboard = document.getElementById('keyboard');
 const inputFields = document.querySelectorAll('input[type="text"]');
 let activeInput = null;
+let isWanakanaBound = false;  // Add a flag to track if Wanakana is bound
+
 
 inputFields.forEach(input => {
     input.addEventListener('focus', function () {
@@ -9,18 +11,21 @@ inputFields.forEach(input => {
         document.getElementById('keyboard').style.display = 'block';
 
         // Bind WanaKana to the focused input field for Japanese typing
-        if (selectedLanguage === 'ja') {
+        if (selectedLanguage === 'ja' && !isWanakanaBound) {
             wanakana.bind(activeInput, { IMEMode: true });
+            isWanakanaBound = true;  // Set the flag to true when bound
         }
     });
 
     input.addEventListener('blur', function () {
         // Unbind WanaKana only if it was bound previously
-        if (selectedLanguage === 'ja' && wanakana.isBound(activeInput)) { // Add check here
+        if (selectedLanguage === 'ja' && isWanakanaBound) {
             wanakana.unbind(activeInput);
+            isWanakanaBound = false;  // Reset the flag after unbinding
         }
     });
 });
+
 
 const keys = document.querySelectorAll('.key');
 keys.forEach(key => {
