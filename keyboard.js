@@ -5,21 +5,18 @@ let activeInput = null;
 
 inputFields.forEach(input => {
     input.addEventListener('focus', function () {
-    console.log('Input focused, Wanakana binding...');
         activeInput = this;
         document.getElementById('keyboard').style.display = 'block';
 
         // Bind WanaKana to the focused input field for Japanese typing
         if (selectedLanguage === 'ja') {
             wanakana.bind(activeInput, { IMEMode: true });
-            console.log("Current selected language in keyboard.js:", selectedLanguage);  // Debug log
-
         }
     });
 
     input.addEventListener('blur', function () {
-        // Unbind WanaKana when the input field loses focus if it is active
-        if (selectedLanguage === 'ja') {
+        // Unbind WanaKana only if it was bound previously
+        if (selectedLanguage === 'ja' && wanakana.isBound(activeInput)) { // Add check here
             wanakana.unbind(activeInput);
         }
     });
