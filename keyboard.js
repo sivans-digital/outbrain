@@ -4,25 +4,27 @@ const inputFields = document.querySelectorAll('input[type="text"]');
 let activeInput = null;
 let isWanakanaBound = false;  // Add a flag to track if Wanakana is bound
 
-
 inputFields.forEach(input => {
     input.addEventListener('focus', function () {
         activeInput = this;
         document.getElementById('keyboard').style.display = 'block';
 
-        // Bind WanaKana to the focused input field for Japanese typing
-        if (selectedLanguage === 'ja') {
+        // Bind WanaKana to the focused input field for Japanese typing, only if not already bound
+        if (selectedLanguage === 'ja' && !activeInput.getAttribute('wanakana-bound')) {
             wanakana.bind(activeInput, { IMEMode: true });
+            activeInput.setAttribute('wanakana-bound', 'true');  // Mark it as bound
         }
     });
 
     input.addEventListener('blur', function () {
-        // Always unbind WanaKana on blur if the language is Japanese
-        if (selectedLanguage === 'ja') {
+        // Only unbind if Wanakana was previously bound
+        if (selectedLanguage === 'ja' && activeInput.getAttribute('wanakana-bound')) {
             wanakana.unbind(activeInput);
+            activeInput.removeAttribute('wanakana-bound');  // Remove the mark
         }
     });
 });
+
 const keys = document.querySelectorAll('.key');
 keys.forEach(key => {
     key.addEventListener('click', function () {
