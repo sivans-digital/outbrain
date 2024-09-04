@@ -5,6 +5,7 @@ let activeInput = null;
 
 inputFields.forEach(input => {
     input.addEventListener('focus', function () {
+    console.log('Input focused, Wanakana binding...');
         activeInput = this;
         keyboard.style.display = 'block';
 
