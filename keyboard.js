@@ -12,6 +12,8 @@ inputFields.forEach(input => {
         // Bind WanaKana to the focused input field for Japanese typing
         if (selectedLanguage === 'ja') {
             wanakana.bind(activeInput, { IMEMode: true });
+            console.log("Current selected language in keyboard.js:", selectedLanguage);  // Debug log
+
         }
     });
 

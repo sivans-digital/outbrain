@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
    document.getElementById('englishButton').addEventListener('click', function () {
         if (selectedTeam) {
             selectedLanguage = 'en';
+            console.log("Language set to:", selectedLanguage);  // Debug log
             loadLanguage(selectedLanguage);
             navigateToNextPage(this);
         } else {
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('japaneseButton').addEventListener('click', function () {
         if (selectedTeam) {
             selectedLanguage = 'ja';
+            console.log("Language set to:", selectedLanguage);  // Debug log
             loadLanguage(selectedLanguage);
             navigateToNextPage(this);
         } else {
