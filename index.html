@@ -69,7 +69,7 @@
                     <button id="captureButton" class="position-bottom">Take Photo</button>
                 </div>
 
-                 <!-- Page 4: Q1 Name Input -->
+                <!-- Page 4: Q1 Name Input -->
                 <div id="page4" class="page" data-index="4">
                     <h1 data-translate="name"></h1>
                     <input type="text" id="name" placeholder="Lara Croft" maxlength="25" required>
@@ -109,14 +109,14 @@
                     <button id="Q5A3" data-translate="Q5A3"></button>
                     <button id="Q5A4" data-translate="Q5A4"></button>
                     <button id="Q5A5" data-translate="Q5A5"></button>
-                </div>  
+                </div>              
 
                 <!-- Page 9: Q6 -->
                 <div id="page9" class="page" data-index="9">
                     <h1 data-translate="Q6Prompt"></h1>
                     <input type="text" id="Q6Prompt" placeholder="" maxlength="25" required data-translate-placeholder="likePlaceholder">
                     <button id="next" data-translate="next" class="next-button position-bottom">Next</button>
-                </div>  
+                </div>                
 
                 <!-- Page 10: Q7 -->
                 <div id="page10" class="page" data-index="7">
@@ -132,8 +132,8 @@
                     <button id="Q8A2" data-translate="Q8A2"></button>
                     <button id="Q8A3" data-translate="Q8A3"></button>
                     <button id="Q8A4" data-translate="Q8A4"></button>
-                </div> 
-
+                </div>     
+                
                 <!-- Page 12: Q9 -->
                 <div id="page12" class="page" data-index="11">
                     <h1 data-translate="Q9Prompt"></h1>
@@ -142,7 +142,7 @@
                     <button id="Q9A3" data-translate="Q9A3"></button>
                     <button id="Q9A4" data-translate="Q9A4"></button>
                 </div> 
-                
+
                 <!-- LAST Q -->
                 <div id="lastQ" class="page" data-index="12">
                     <h1 data-translate="lastQPrompt"></h1>
@@ -151,7 +151,7 @@
                 </div>
 
                 <!-- Loading Screen -->
-                <div id="pageLoading" class="page" data-index="10">
+                <div id="pageLoading" class="page" data-index="13">
                     <h1 data-translate="generating">Generating your personalized card...</h1>
                     <h3>We will work on a solution to shorten the<br>wait time once we have all the questions</h3>
                     <div class="container">
@@ -162,7 +162,7 @@
                 </div>
 
                 <!-- Page Last: Result - Displaying the Card -->
-                <div id="pageLast" class="page" data-index="11">
+                <div id="pageLast" class="page" data-index="14">
                     <div id="card">
                         <div id="cardName"></div> <!-- This is where the name will be displayed -->
                         <img id="generatedImage">
@@ -181,7 +181,7 @@
                 <!-- On-Screen Keyboard -->
                 <div id="keyboard" style="display: none;">
                     <div class="keyboard-row">
-                        <button class="key">ぁ</button>
+                        <button class="key">Q</button>
                         <button class="key">W</button>
                         <button class="key">E</button>
                         <button class="key">R</button>
@@ -223,7 +223,6 @@
         <!-- Link to the JavaScript files -->
         <script src="app.js"></script>
         <script src="api.js"></script>
-        <script src="https://unpkg.com/wanakana"></script>
         <script src="keyboard.js"></script>
 
         <!-- English JSON data -->
