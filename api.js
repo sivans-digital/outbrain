@@ -1,5 +1,5 @@
 (function () {
-    const OPENAI_API_KEY = 'disabled. Replace with new API key'; //REPLACE
+    const OPENAI_API_KEY = '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'; 
 
     // Generalized function to generate prompts based on type (headline/anime)
     // Generalized function to generate prompts based on type (headline/anime)
