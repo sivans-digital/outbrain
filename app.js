@@ -1,16 +1,15 @@
-// Declare selectedLanguage globally
-var selectedLanguage = ''; // Ensure it's globally scoped
 document.addEventListener('DOMContentLoaded', function () {
     // Global variables for selected options
     let selectedTeam = '';
+    let selectedLanguage = ''; 
     let selectedGender = '';
-    let selectedAdvice = '';
+    let selectedAnswers = {};
     let userName = '';
 
-   // Team selection handling
+    // Team selection handling
     const outbrainTeam = document.getElementById('outbrainTeam');
     const onyxTeam = document.getElementById('onyxTeam');
-    
+
     outbrainTeam.addEventListener('click', function () {
         selectedTeam = 'outbrain';
         highlightSelectedTeam(outbrainTeam, onyxTeam);
@@ -37,10 +36,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Language selection handling
-   document.getElementById('englishButton').addEventListener('click', function () {
+    document.getElementById('englishButton').addEventListener('click', function () {
         if (selectedTeam) {
             selectedLanguage = 'en';
-            console.log("Language set to:", selectedLanguage);  // Debug log
             loadLanguage(selectedLanguage);
             navigateToNextPage(this);
         } else {
@@ -51,14 +49,12 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('japaneseButton').addEventListener('click', function () {
         if (selectedTeam) {
             selectedLanguage = 'ja';
-            console.log("Language set to:", selectedLanguage);  // Debug log
             loadLanguage(selectedLanguage);
             navigateToNextPage(this);
         } else {
             alert('Please select a team first.');
         }
     });
-    
 
     function loadLanguage(language) {
         let jsonData;
@@ -110,25 +106,54 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         userName = nameInput; // Store the name
+        selectedAnswers.name = userName;  // Save in selectedAnswers object
         goToPage('page4', 'page5');
     });
 
     // Gender selection handling
     document.getElementById('maleButton').addEventListener('click', function () {
         selectedGender = 'male';
+        selectedAnswers.gender = selectedGender;  // Save in selectedAnswers object
         goToPage('page5', 'page6');
     });
 
     document.getElementById('femaleButton').addEventListener('click', function () {
         selectedGender = 'female';
+        selectedAnswers.gender = selectedGender;  // Save in selectedAnswers object
         goToPage('page5', 'page6');
     });
 
     document.getElementById('otherButton').addEventListener('click', function () {
-        selectedGender = 'otherButton';
+        selectedGender = 'other';
+        selectedAnswers.gender = selectedGender;  // Save in selectedAnswers object
         goToPage('page5', 'page6');
     });
-    console.log('Selected gender:', selectedGender);
+
+    // Multiple-choice question handling
+    const multiChoiceButtons = document.querySelectorAll('button[id^="Q"]');
+    multiChoiceButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const questionId = this.id.slice(0, 3);  // Extract the question number (e.g., Q3)
+            selectedAnswers[questionId] = this.getAttribute('data-translate');  // Save the answer in selectedAnswers
+            navigateToNextPage(this);
+        });
+    });
+
+    // Input field handling
+    document.querySelectorAll('input[type="text"]').forEach(inputField => {
+        const nextButton = inputField.nextElementSibling;  // Assuming next button follows input
+        nextButton.addEventListener('click', function () {
+            if (inputField.value.trim() === '') {
+                alert('Please fill in the field.');
+                inputField.focus();
+                return;
+            }
+
+            const questionId = inputField.id;  // Use input's ID as key (e.g., Q4Prompt)
+            selectedAnswers[questionId] = inputField.value.trim();  // Save the input value
+            navigateToNextPage(this);
+        });
+    });
 
     // Function to handle page transitions
     function goToPage(currentPageId, nextPageId) {
@@ -136,21 +161,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById(nextPageId).classList.add('active');
     }
 
-    // Other navigation listeners for specific buttons
+    // Navigation listeners for specific buttons
     addNavigationListener('yesButton', 'page2', 'page3');
     addNavigationListener('noButton', 'page2', 'page4');
-    addNavigationListener('maleButton', 'page5', 'page6');
-    addNavigationListener('femaleButton', 'page5', 'page6');
-    addNavigationListener('otherButton', 'page5', 'page6');
-    addNavigationListener('networkButton', 'page6', 'page7');
-    addNavigationListener('portfolioButton', 'page6', 'page7');
-    addNavigationListener('trendsButton', 'page6', 'page7');
-    addNavigationListener('collabButton', 'page6', 'page7');
-    addNavigationListener('Q2A1', 'page8', 'lastQ');
-    addNavigationListener('Q2A2', 'page8', 'lastQ');
-    addNavigationListener('Q2A3', 'page8', 'lastQ');
-    addNavigationListener('Q2A4', 'page8', 'lastQ');
-    addNavigationListener('submit', 'lastQ', 'pageLoading');
 
     function addNavigationListener(buttonId, currentPageId, nextPageId) {
         document.getElementById(buttonId).addEventListener('click', function () {
@@ -177,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('captureButton').addEventListener('click', function () {
         const countdownOverlay = document.getElementById('countdownOverlay');
         const countdownText = document.getElementById('countdownText');
-        let countdown = 3; // Start countdown from 3 seconds
+        let countdown = 3;  // Start countdown from 3 seconds
 
         countdownOverlay.style.display = 'flex';
         countdownText.textContent = countdown;
@@ -205,37 +218,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1000);
     });
 
-    document.getElementById('noButton').addEventListener('click', function () {
-        document.getElementById('generatedImage').src = defaultImageUrl;
-        goToPage('page2', 'page4');
-    });
-
+    // Handle the final submission
     document.getElementById('submit').addEventListener('click', function () {
-        const interestInput = document.getElementById('interest');
-        if (interestInput.value.trim() === '') {
-            alert('Please enter something you like.');
-            interestInput.focus();
-        } else {
-            goToPageLoading();
-        }
+        goToPageLoading();
     });
 
     async function goToPageLoading() {
         document.getElementById('lastQ').style.display = 'none';
         document.getElementById('pageLoading').style.display = 'block';
 
-        const interestInput = document.getElementById('interest').value.trim();
-        if (interestInput === '') {
-            alert('Please enter something you like.');
-            document.getElementById('interest').focus();
-            return;
-        }
-
         try {
-            const generatedHeadline = await generateHeadlineWithAI(selectedGender, interestInput, selectedAdvice, selectedLanguage);
+            // Assuming "selectedAnswers" contains all answers
+            const generatedHeadline = await callOpenAIAPI('headline', selectedGender, selectedAnswers.Q3Prompt, selectedAnswers.Q4Prompt, selectedAnswers.Q5Prompt, selectedLanguage);
             document.getElementById('headline').textContent = generatedHeadline.slice(1, -1);
 
-            const animePrompt = await generateAnimePrompt(selectedGender, selectedAdvice, interestInput);
+            const animePrompt = await callOpenAIAPI('anime', selectedGender, selectedAnswers.Q3Prompt, selectedAnswers.Q4Prompt, selectedAnswers.Q5Prompt, selectedLanguage);
             const animeImageUrl = await generateAnimeImage(animePrompt);
 
             if (animeImageUrl) {
@@ -263,7 +260,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error("Error during final page processing:", error);
             alert("An error occurred while generating your card. Please try again.");
         }
-
     }
 });
 
