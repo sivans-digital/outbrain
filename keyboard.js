@@ -8,18 +8,17 @@ inputFields.forEach(input => {
         activeInput = this;
         document.getElementById('keyboard').style.display = 'block';
 
-        // Bind WanaKana to the focused input field for Japanese typing
+        // Bind Wanakana to the focused input field for Japanese typing
         if (selectedLanguage === 'ja' && !activeInput.hasAttribute('wanakana-bound')) {
             wanakana.bind(activeInput, { IMEMode: true });
-            activeInput.setAttribute('wanakana-bound', 'true');  // Mark it as bound
+            activeInput.setAttribute('wanakana-bound', 'true'); // Mark it as bound
         }
     });
 
     input.addEventListener('blur', function () {
-        // Only unbind WanaKana if it was previously bound
         if (selectedLanguage === 'ja' && activeInput && activeInput.hasAttribute('wanakana-bound')) {
             wanakana.unbind(activeInput);
-            activeInput.removeAttribute('wanakana-bound');  // Remove the mark
+            activeInput.removeAttribute('wanakana-bound'); // Remove the mark
         }
     });
 });
@@ -36,13 +35,21 @@ keys.forEach(key => {
         if (keyValue === 'space') {
             activeInput.value += ' ';
         } else if (keyValue === '←') {
-            activeInput.value = activeInput.value.slice(0, -1);  // Handle backspace
+            activeInput.value = activeInput.value.slice(0, -1); // Handle backspace
         } else {
             activeInput.value += keyValue;
         }
 
+        // If Japanese is selected, convert input to Romaji using Wanakana
+        if (selectedLanguage === 'ja') {
+            const convertedValue = wanakana.toKana(activeInput.value); // Convert to Kana
+            activeInput.value = convertedValue;
+        }
+
+        // Move the caret to the end of the input field
         setTimeout(() => {
-            activeInput.focus(); // Keep focus after input
+            activeInput.focus();
+            activeInput.setSelectionRange(activeInput.value.length, activeInput.value.length); // Ensure caret is at the end
         }, 0);
     });
 });
