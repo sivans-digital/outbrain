@@ -8,19 +8,18 @@ inputFields.forEach(input => {
         activeInput = this;
         document.getElementById('keyboard').style.display = 'block';
 
-        // Bind WanaKana only if the selected language is Japanese
-        // Check if selectedLanguage is properly defined
-        if (typeof selectedLanguage !== 'undefined' && selectedLanguage === 'ja') {
+        // Bind WanaKana to the focused input field for Japanese typing
+        if (selectedLanguage === 'ja' && !activeInput.getAttribute('wanakana-bound')) {
             wanakana.bind(activeInput, { IMEMode: true });
-            activeInput.setAttribute('wanakana-bound', 'true'); // Mark it as bound
+            activeInput.setAttribute('wanakana-bound', 'true');  // Mark it as bound
         }
     });
 
     input.addEventListener('blur', function () {
-        // Only unbind WanaKana if it was previously bound
-        if (typeof selectedLanguage !== 'undefined' && selectedLanguage === 'ja' && activeInput.getAttribute('wanakana-bound')) {
+        // Unbind WanaKana only if it was previously bound
+        if (selectedLanguage === 'ja' && activeInput.getAttribute('wanakana-bound')) {
             wanakana.unbind(activeInput);
-            activeInput.removeAttribute('wanakana-bound'); // Remove the mark
+            activeInput.removeAttribute('wanakana-bound');  // Remove the mark
         }
     });
 });
