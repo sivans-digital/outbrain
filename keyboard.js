@@ -9,7 +9,8 @@ inputFields.forEach(input => {
         document.getElementById('keyboard').style.display = 'block';
 
         // Bind WanaKana only if the selected language is Japanese
-        if (selectedLanguage === 'ja' && !activeInput.getAttribute('wanakana-bound')) {
+        // Check if selectedLanguage is properly defined
+        if (typeof selectedLanguage !== 'undefined' && selectedLanguage === 'ja') {
             wanakana.bind(activeInput, { IMEMode: true });
             activeInput.setAttribute('wanakana-bound', 'true'); // Mark it as bound
         }
@@ -17,7 +18,7 @@ inputFields.forEach(input => {
 
     input.addEventListener('blur', function () {
         // Only unbind WanaKana if it was previously bound
-        if (selectedLanguage === 'ja' && activeInput.getAttribute('wanakana-bound')) {
+        if (typeof selectedLanguage !== 'undefined' && selectedLanguage === 'ja' && activeInput.getAttribute('wanakana-bound')) {
             wanakana.unbind(activeInput);
             activeInput.removeAttribute('wanakana-bound'); // Remove the mark
         }

@@ -1,11 +1,14 @@
-    let selectedLanguage = ''; 
+// Declare selectedLanguage globally at the top of app.js
+let selectedLanguage = '';
+
 document.addEventListener('DOMContentLoaded', function () {
-    // Global variables for selected options
+    // All other code remains unchanged inside the DOMContentLoaded
+
     let selectedTeam = '';
     let selectedGender = '';
     let selectedAnswers = {};
     let userName = '';
-
+    
     // Team selection handling
     const outbrainTeam = document.getElementById('outbrainTeam');
     const onyxTeam = document.getElementById('onyxTeam');
