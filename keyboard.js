@@ -11,15 +11,15 @@ inputFields.forEach(input => {
         // Bind WanaKana to the focused input field for Japanese typing
         if (selectedLanguage === 'ja' && !activeInput.getAttribute('wanakana-bound')) {
             wanakana.bind(activeInput, { IMEMode: true });
-            activeInput.setAttribute('wanakana-bound', 'true');  // Mark it as bound
+            activeInput.setAttribute('wanakana-bound', 'true'); // Mark it as bound
         }
     });
 
     input.addEventListener('blur', function () {
-        // Unbind WanaKana only if it was previously bound
+        // Only unbind WanaKana if it was previously bound
         if (selectedLanguage === 'ja' && activeInput.getAttribute('wanakana-bound')) {
             wanakana.unbind(activeInput);
-            activeInput.removeAttribute('wanakana-bound');  // Remove the mark
+            activeInput.removeAttribute('wanakana-bound'); // Remove the mark
         }
     });
 });
@@ -35,7 +35,7 @@ keys.forEach(key => {
         if (keyValue === 'space') {
             activeInput.value += ' ';
         } else if (keyValue === '←') {
-            activeInput.value = activeInput.value.slice(0, -1);
+            activeInput.value = activeInput.value.slice(0, -1);  // Handle backspace
         } else {
             activeInput.value += keyValue;
         }
