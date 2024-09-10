@@ -1,7 +1,7 @@
+    let selectedLanguage = ''; 
 document.addEventListener('DOMContentLoaded', function () {
     // Global variables for selected options
     let selectedTeam = '';
-    let selectedLanguage = ''; 
     let selectedGender = '';
     let selectedAnswers = {};
     let userName = '';
@@ -36,24 +36,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Language selection handling
-document.getElementById('englishButton').addEventListener('click', function () {
-    if (selectedTeam) {
-        selectedLanguage = 'en';
-        loadLanguage(selectedLanguage);
-        navigateToNextPage(this);
-    } else {
-        alert('Please select a team first.');
-    }
-});
+    document.getElementById('englishButton').addEventListener('click', function () {
+        if (selectedTeam) {
+            selectedLanguage = 'en';
+            loadLanguage(selectedLanguage);
+            navigateToNextPage(this);
+        } else {
+            alert('Please select a team first.');
+        }
+    });
 
-document.getElementById('japaneseButton').addEventListener('click', function () {
-    if (selectedTeam) {
-        selectedLanguage = 'ja';
-        loadLanguage(selectedLanguage);
-        navigateToNextPage(this);
-    } else {
-        alert('Please select a team first.');
-    }
+    document.getElementById('japaneseButton').addEventListener('click', function () {
+        if (selectedTeam) {
+            selectedLanguage = 'ja';
+            loadLanguage(selectedLanguage);
+            navigateToNextPage(this);
+        } else {
+            alert('Please select a team first.');
+        }
+    });
 });
     function loadLanguage(language) {
         let jsonData;
