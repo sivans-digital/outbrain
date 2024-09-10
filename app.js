@@ -2,13 +2,11 @@
 let selectedLanguage = '';
 
 document.addEventListener('DOMContentLoaded', function () {
-    // All other code remains unchanged inside the DOMContentLoaded
-
     let selectedTeam = '';
     let selectedGender = '';
     let selectedAnswers = {};
     let userName = '';
-    
+
     // Team selection handling
     const outbrainTeam = document.getElementById('outbrainTeam');
     const onyxTeam = document.getElementById('onyxTeam');
@@ -58,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Please select a team first.');
         }
     });
-});
+
     function loadLanguage(language) {
         let jsonData;
         if (language === 'en') {
@@ -178,15 +176,15 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('yesButton').addEventListener('click', function () {
         navigator.mediaDevices.getUserMedia({ video: true })
             .then(stream => {
-            const video = document.getElementById('video');
-            video.srcObject = stream;
-            video.play();
-            goToPage('page2', 'page3');
-        })
+                const video = document.getElementById('video');
+                video.srcObject = stream;
+                video.play();
+                goToPage('page2', 'page3');
+            })
             .catch(error => {
-            console.error("Error accessing the camera: ", error);
-            alert("Unable to access the camera. Please check your settings.");
-        });
+                console.error("Error accessing the camera: ", error);
+                alert("Unable to access the camera. Please check your settings.");
+            });
     });
 
     // Capture button event listener for countdown and photo capture
@@ -265,5 +263,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+
 
 const defaultImageUrl = 'https://emoji.discadia.com/emojis/6f7ad7bb-4cd4-4894-a0dd-b49e396bb1c0.png';
