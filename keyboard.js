@@ -9,7 +9,7 @@ inputFields.forEach(input => {
         document.getElementById('keyboard').style.display = 'block';
 
         // Bind WanaKana to the focused input field for Japanese typing
-        if (selectedLanguage === 'ja' && !activeInput.getAttribute('wanakana-bound')) {
+        if (selectedLanguage === 'ja' && !activeInput.hasAttribute('wanakana-bound')) {
             wanakana.bind(activeInput, { IMEMode: true });
             activeInput.setAttribute('wanakana-bound', 'true'); // Mark it as bound
         }
@@ -17,7 +17,7 @@ inputFields.forEach(input => {
 
     input.addEventListener('blur', function () {
         // Only unbind WanaKana if it was previously bound
-        if (selectedLanguage === 'ja' && activeInput.getAttribute('wanakana-bound')) {
+        if (selectedLanguage === 'ja' && activeInput && activeInput.hasAttribute('wanakana-bound')) {
             wanakana.unbind(activeInput);
             activeInput.removeAttribute('wanakana-bound'); // Remove the mark
         }
@@ -68,16 +68,16 @@ function toggleKeyboardVisibility(pageId) {
     }
 }
 
-// Hide the keyboard when clicking outside of an input field
+// Hide the keyboard when clicking outside
 document.addEventListener('click', function (event) {
     if (!keyboard.contains(event.target) && !event.target.matches('input[type="text"]')) {
         keyboard.style.display = 'none';
-        if (activeInput) {
-            activeInput.blur();
-            if (selectedLanguage === 'ja') {
-                wanakana.unbind(activeInput);
-            }
-            activeInput = null;
+
+        if (activeInput && selectedLanguage === 'ja' && activeInput.hasAttribute('wanakana-bound')) {
+            wanakana.unbind(activeInput); // Unbind only if it was bound
+            activeInput.removeAttribute('wanakana-bound');
         }
+
+        activeInput = null; // Reset activeInput
     }
 });
