@@ -36,26 +36,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Language selection handling
-    document.getElementById('englishButton').addEventListener('click', function () {
-        if (selectedTeam) {
-            selectedLanguage = 'en';
-            loadLanguage(selectedLanguage);
-            navigateToNextPage(this);
-        } else {
-            alert('Please select a team first.');
-        }
-    });
+document.getElementById('englishButton').addEventListener('click', function () {
+    if (selectedTeam) {
+        selectedLanguage = 'en';
+        loadLanguage(selectedLanguage);
+        navigateToNextPage(this);
+    } else {
+        alert('Please select a team first.');
+    }
+});
 
-    document.getElementById('japaneseButton').addEventListener('click', function () {
-        if (selectedTeam) {
-            selectedLanguage = 'ja';
-            loadLanguage(selectedLanguage);
-            navigateToNextPage(this);
-        } else {
-            alert('Please select a team first.');
-        }
-    });
-
+document.getElementById('japaneseButton').addEventListener('click', function () {
+    if (selectedTeam) {
+        selectedLanguage = 'ja';
+        loadLanguage(selectedLanguage);
+        navigateToNextPage(this);
+    } else {
+        alert('Please select a team first.');
+    }
+});
     function loadLanguage(language) {
         let jsonData;
         if (language === 'en') {

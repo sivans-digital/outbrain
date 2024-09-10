@@ -2,29 +2,29 @@
 const keyboard = document.getElementById('keyboard');
 const inputFields = document.querySelectorAll('input[type="text"]');
 let activeInput = null;
-let isWanakanaBound = false;  // Add a flag to track if Wanakana is bound
 
 inputFields.forEach(input => {
     input.addEventListener('focus', function () {
         activeInput = this;
         document.getElementById('keyboard').style.display = 'block';
 
-        // Bind WanaKana to the focused input field for Japanese typing, only if not already bound
+        // Bind WanaKana only if the selected language is Japanese
         if (selectedLanguage === 'ja' && !activeInput.getAttribute('wanakana-bound')) {
             wanakana.bind(activeInput, { IMEMode: true });
-            activeInput.setAttribute('wanakana-bound', 'true');  // Mark it as bound
+            activeInput.setAttribute('wanakana-bound', 'true'); // Mark it as bound
         }
     });
 
     input.addEventListener('blur', function () {
-        // Only unbind if Wanakana was previously bound
+        // Only unbind WanaKana if it was previously bound
         if (selectedLanguage === 'ja' && activeInput.getAttribute('wanakana-bound')) {
             wanakana.unbind(activeInput);
-            activeInput.removeAttribute('wanakana-bound');  // Remove the mark
+            activeInput.removeAttribute('wanakana-bound'); // Remove the mark
         }
     });
 });
 
+// Keyboard interactions
 const keys = document.querySelectorAll('.key');
 keys.forEach(key => {
     key.addEventListener('click', function () {
@@ -40,12 +40,12 @@ keys.forEach(key => {
             activeInput.value += keyValue;
         }
 
-        // Keep the input focused after typing
         setTimeout(() => {
-            activeInput.focus();
+            activeInput.focus(); // Keep focus after input
         }, 0);
     });
 });
+
 
 // AUTO FOCUS //
 function toggleKeyboardVisibility(pageId) {
