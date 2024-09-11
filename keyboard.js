@@ -45,7 +45,7 @@ keys.forEach(key => {
             activeInput.value = convertedValue;
         }
 
-        // Move the caret to the end of the input field
+        // Move the caret to the end of the input field after each key press
         setTimeout(() => {
             activeInput.focus();
             activeInput.setSelectionRange(activeInput.value.length, activeInput.value.length); // Ensure caret is at the end
