@@ -8,10 +8,10 @@ inputFields.forEach(input => {
         activeInput = this;
         document.getElementById('keyboard').style.display = 'block';
 
-        // Bind Wanakana to the focused input field for Japanese typing
+        // Bind Wanakana to the focused input field for Japanese typing with IMEMode for better N handling
         if (selectedLanguage === 'ja' && !activeInput.hasAttribute('wanakana-bound')) {
-            wanakana.bind(activeInput, { IMEMode: true });
-            activeInput.setAttribute('wanakana-bound', 'true'); // Mark it as bound
+            wanakana.bind(activeInput, { IMEMode: true }); // Enable IME Mode
+            activeInput.setAttribute('wanakana-bound', 'true');  // Mark it as bound
         }
     });
 
@@ -22,7 +22,6 @@ inputFields.forEach(input => {
         }
     });
 });
-
 
 // Keyboard interactions
 const keys = document.querySelectorAll('.key');
@@ -40,9 +39,9 @@ keys.forEach(key => {
             activeInput.value += keyValue;
         }
 
-        // If Japanese is selected, convert input to Romaji using Wanakana
+        // If Japanese is selected, convert input using Wanakana IME Mode
         if (selectedLanguage === 'ja') {
-            const convertedValue = wanakana.toKana(activeInput.value); // Convert to Kana
+            const convertedValue = wanakana.toKana(activeInput.value, { IMEMode: true });
             activeInput.value = convertedValue;
         }
 
@@ -53,7 +52,6 @@ keys.forEach(key => {
         }, 0);
     });
 });
-
 
 // AUTO FOCUS //
 function toggleKeyboardVisibility(pageId) {
