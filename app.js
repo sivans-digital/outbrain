@@ -261,6 +261,12 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error("Error during final page processing:", error);
             alert("An error occurred while generating your card. Please try again.");
         }
+                // Ensure the email field gains focus and the keyboard appears
+        toggleKeyboardVisibility('pageLast'); // Call this to show the keyboard for email
+    } catch (error) {
+        console.error("Error during final page processing:", error);
+        alert("An error occurred while generating your card. Please try again.");
+    }
     }
 });
 
