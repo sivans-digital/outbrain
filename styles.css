@@ -238,8 +238,6 @@ input {
     text-align: center;
 }
 
-/* LOADER */
-
 .loader1 {
     position: relative;
     height: 80px;
@@ -272,7 +270,7 @@ input {
 /* Card Styling */
 
 #card {
-    width: 80%;
+    width: 50%;
     max-width: 450px;
     aspect-ratio: 822 / 1122;
     background-color: var(--main-color);
@@ -281,21 +279,26 @@ input {
     padding: 20px;
     margin: 30px auto;
     color: white;
-    position: relative;
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+
 }
 
 #cardName {
+    text-transform: uppercase;
     position: absolute;
-    top: 10px;
+    top: 3%;
     left: 20px;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
     font-family: 'Audiowide', cursive;
 }
 
 #generatedImage {
     position: absolute;
-    top: 50px;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
@@ -306,18 +309,18 @@ input {
 
 #tagline {
     position: absolute;
-    top: 355px;
+    top: 64%;
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 0.75rem;
     color: #FFEF9D;
     font-family: Avenir, Arial, sans-serif;
 }
 
 #headline {
     position: absolute;
-    top: 385px;
+    top: 68%;
     text-align: left;
-    font-size: 1.5rem;
+    font-size: 1rem;
     width: 90%;
     font-family: Avenir, Arial, sans-serif;
     color: white;
@@ -327,15 +330,31 @@ input {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    width: 150px;
+    width: 25%;
     height: auto;
 }
 
 /* Email and Button Containers */
-#emailContainer, #buttonContainer {
+#emailContainer {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    position: absolute;
+    top: 49%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
 }
 
 /* Camera Capture Styling */
