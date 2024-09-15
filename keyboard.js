@@ -53,16 +53,18 @@ keys.forEach(key => {
     });
 });
 
-// AUTO FOCUS //
+// AUTO FOCUS FUNCTIONALITY
 function toggleKeyboardVisibility(pageId) {
     const page = document.getElementById(pageId);
-    const inputField = page.querySelector('input[type="text"]');
+    const inputField = page.querySelector('input[type="text"], input[type="email"]'); // Include email field too
 
     if (inputField) {
+        // Set focus after page transition to ensure it's visible
         setTimeout(() => {
             inputField.focus();
         }, 100);
 
+        // Display keyboard when input field is present
         document.getElementById('keyboard').style.display = 'block';
 
         // Bind WanaKana to the input field if Japanese is selected
@@ -74,16 +76,25 @@ function toggleKeyboardVisibility(pageId) {
     }
 }
 
-// Show or hide the keyboard based on input field focus
+// Bind focus and keyboard visibility after card generation for the email input
+document.getElementById('email').addEventListener('focus', function () {
+    const inputField = this;
+    setTimeout(() => {
+        inputField.focus();
+    }, 100);
+    document.getElementById('keyboard').style.display = 'block'; // Show keyboard for email input
+});
+
+// Hide the keyboard when clicking outside of an input field
 document.addEventListener('click', function (event) {
-    if (!keyboard.contains(event.target) && !event.target.matches('input[type="text"]')) {
+    if (!keyboard.contains(event.target) && !event.target.matches('input[type="text"], input[type="email"]')) {
         keyboard.style.display = 'none';
-
-        if (activeInput && selectedLanguage === 'ja' && activeInput.hasAttribute('wanakana-bound')) {
-            wanakana.unbind(activeInput);  // Unbind if it was bound
-            activeInput.removeAttribute('wanakana-bound');
+        if (activeInput) {
+            activeInput.blur();
+            if (selectedLanguage === 'ja') {
+                wanakana.unbind(activeInput);
+            }
+            activeInput = null;
         }
-
-        activeInput = null;  // Reset activeInput
     }
 });

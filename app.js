@@ -105,6 +105,12 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('name').focus();
             return;
         }
+        document.getElementById('name').addEventListener('input', function () {
+            this.value = this.value.replace(/\b\w/g, function(char) {
+                return char.toUpperCase();
+            });
+        });
+
 
         userName = nameInput; // Store the name
         selectedAnswers.name = userName;  // Save in selectedAnswers object
@@ -176,15 +182,15 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('yesButton').addEventListener('click', function () {
         navigator.mediaDevices.getUserMedia({ video: true })
             .then(stream => {
-                const video = document.getElementById('video');
-                video.srcObject = stream;
-                video.play();
-                goToPage('page2', 'page3');
-            })
+            const video = document.getElementById('video');
+            video.srcObject = stream;
+            video.play();
+            goToPage('page2', 'page3');
+        })
             .catch(error => {
-                console.error("Error accessing the camera: ", error);
-                alert("Unable to access the camera. Please check your settings.");
-            });
+            console.error("Error accessing the camera: ", error);
+            alert("Unable to access the camera. Please check your settings.");
+        });
     });
 
     // Capture button event listener for countdown and photo capture
@@ -257,11 +263,15 @@ document.addEventListener('DOMContentLoaded', function () {
             const finalPage = document.getElementById('pageLast');
             finalPage.classList.remove('hidden');
             finalPage.style.display = 'block';
+
+            // Ensure the email field gains focus and the keyboard appears
+            toggleKeyboardVisibility('pageLast');
         } catch (error) {
             console.error("Error during final page processing:", error);
             alert("An error occurred while generating your card. Please try again.");
         }
     }
+
 });
 
 
