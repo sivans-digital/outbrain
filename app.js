@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
             loadLanguage(selectedLanguage);
             navigateToNextPage(this);
         } else {
-            alert('Please select a team first.');
+            alert('まずチームを選んでください');
         }
     });
 
@@ -112,27 +112,27 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
 
-        userName = nameInput; // Store the name
-        selectedAnswers.name = userName;  // Save in selectedAnswers object
+        userName = nameInput;
+        selectedAnswers.name = userName;
         goToPage('page4', 'page5');
     });
 
     // Gender selection handling
     document.getElementById('maleButton').addEventListener('click', function () {
         selectedGender = 'male';
-        selectedAnswers.gender = selectedGender;  // Save in selectedAnswers object
+        selectedAnswers.gender = selectedGender;
         goToPage('page5', 'page6');
     });
 
     document.getElementById('femaleButton').addEventListener('click', function () {
         selectedGender = 'female';
-        selectedAnswers.gender = selectedGender;  // Save in selectedAnswers object
+        selectedAnswers.gender = selectedGender;
         goToPage('page5', 'page6');
     });
 
     document.getElementById('otherButton').addEventListener('click', function () {
         selectedGender = 'other';
-        selectedAnswers.gender = selectedGender;  // Save in selectedAnswers object
+        selectedAnswers.gender = selectedGender;
         goToPage('page5', 'page6');
     });
 
@@ -140,8 +140,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const multiChoiceButtons = document.querySelectorAll('button[id^="Q"]');
     multiChoiceButtons.forEach(button => {
         button.addEventListener('click', function () {
-            const questionId = this.id.slice(0, 3);  // Extract the question number (e.g., Q3)
-            selectedAnswers[questionId] = this.getAttribute('data-translate');  // Save the answer in selectedAnswers
+            const questionId = this.id.slice(0, 3);
+            selectedAnswers[questionId] = this.getAttribute('data-translate');
             navigateToNextPage(this);
         });
     });

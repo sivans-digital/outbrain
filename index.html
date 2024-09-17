@@ -85,7 +85,7 @@
                     <button id="otherButton" data-translate="other">Other</button>
                 </div>
 
-                <!-- Page 6: Q3 -->
+                <!-- Page 6: Q3 A place you like -->
                 <div id="page6" class="page" data-index="6">
                     <h1 data-translate="Q3Prompt"></h1>
                     <button id="Q3A1" data-translate="Q3A1"></button>
@@ -94,14 +94,14 @@
                     <button id="Q3A4" data-translate="Q3A4"></button>
                 </div>
 
-                <!-- Page 7: Q4 -->
+                <!-- Page 7: Q4 Something you are good at -->
                 <div id="page7" class="page" data-index="7">
                     <h1 data-translate="Q4Prompt"></h1>
                     <input type="text" id="Q4Prompt" placeholder="" maxlength="25" required data-translate-placeholder="likePlaceholder">
                     <button id="next" data-translate="next" class="next-button position-bottom">Next</button>
                 </div>
 
-                <!-- Page 8: Q5 -->
+                <!-- Page 8: Q5 Where would you like to go? -->
                 <div id="page8" class="page" data-index="8">
                     <h1 data-translate="Q5Prompt"></h1>
                     <button id="Q5A1" data-translate="Q5A1"></button>
@@ -111,22 +111,22 @@
                     <button id="Q5A5" data-translate="Q5A5"></button>
                 </div>              
 
-                <!-- Page 9: Q6 -->
+                <!-- Page 9: Q6 Something you like -->
                 <div id="page9" class="page" data-index="9">
                     <h1 data-translate="Q6Prompt"></h1>
                     <input type="text" id="Q6Prompt" placeholder="" maxlength="25" required data-translate-placeholder="likePlaceholder">
                     <button id="next" data-translate="next" class="next-button position-bottom">Next</button>
                 </div>                
 
-                <!-- Page 10: Q7 -->
-                <div id="page10" class="page" data-index="7">
+                <!-- Page 10: Q7 What's your biggest dream? -->
+                <div id="page10" class="page" data-index="10">
                     <h1 data-translate="Q7Prompt"></h1>
                     <input type="text" id="Q7Prompt" placeholder="" maxlength="25" required data-translate-placeholder="likePlaceholder">
                     <button id="next" data-translate="next" class="next-button position-bottom">Next</button>
                 </div>
 
-                <!-- Page 11: Q8 -->
-                <div id="page11" class="page" data-index="10">
+                <!-- Page 11: Q8 How often do you game? -->
+                <div id="page11" class="page" data-index="11">
                     <h1 data-translate="Q8Prompt"></h1>
                     <button id="Q8A1" data-translate="Q8A1"></button>
                     <button id="Q8A2" data-translate="Q8A2"></button>
@@ -134,24 +134,31 @@
                     <button id="Q8A4" data-translate="Q8A4"></button>
                 </div>     
                 
-                <!-- Page 12: Q9 -->
-                <div id="page12" class="page" data-index="11">
+                <!-- Page 12: Q9 What do you like about yourself -->
+                <div id="page12" class="page" data-index="12">
                     <h1 data-translate="Q9Prompt"></h1>
                     <button id="Q9A1" data-translate="Q9A1"></button>
                     <button id="Q9A2" data-translate="Q9A2"></button>
                     <button id="Q9A3" data-translate="Q9A3"></button>
                     <button id="Q9A4" data-translate="Q9A4"></button>
+                </div>                
+                
+                <!-- Page 13: Q13 -->
+                <div id="page13" class="page" data-index="13">
+                    <h1 data-translate="Q9Prompt"></h1>
+                    <button id="Q10A1" data-translate="Q10A1"></button>
+                    <button id="Q10A2" data-translate="Q10A2"></button>                
                 </div> 
 
                 <!-- LAST Q -->
-                <div id="lastQ" class="page" data-index="12">
+                <div id="lastQ" class="page" data-index="14">
                     <h1 data-translate="lastQPrompt"></h1>
                     <input type="text" id="interest" placeholder="" maxlength="25" required data-translate-placeholder="likePlaceholder">
                     <button id="submit" data-translate="submit">Submit</button>
                 </div>
 
                 <!-- Loading Screen -->
-                <div id="pageLoading" class="page" data-index="13">
+                <div id="pageLoading" class="page" data-index="15">
                     <h1 data-translate="generating">Generating your personalized card...</h1>
                     <h3>We will work on a solution to shorten the<br>wait time once we have all the questions</h3>
                     <div class="container">
@@ -162,7 +169,7 @@
                 </div>
 
                 <!-- Page Last: Result - Displaying the Card -->
-                <div id="pageLast" class="page" data-index="14">
+                <div id="pageLast" class="page" data-index="15">
                     <div id="card">
                         <div id="cardName"></div> <!-- This is where the name will be displayed -->
                         <img id="generatedImage">
@@ -233,14 +240,14 @@
     "permissionPhoto": "Can we take a photo?",
     "pose": "Pose for the camera!",
     "poseinstruction": "Get ready! You have 5 seconds and only one chance",
-    "name": "How should we call you?",
+    "name": "Please enter your full name",
     "next": "Next",
     "gender": "Select Your Gender",
     "male":"Male",
     "female":"Female",
     "other":"Other",
     "Q3Prompt": "A place you like",
-    "Q3A1": "Nature",
+    "Q3A1": "The mountains",
     "Q3A2": "The ocean",
     "Q3A3": "The city",
     "Q3A4": "My room",
@@ -261,10 +268,13 @@
     "Q8A3": "Monthly",
     "Q8A4": "I don't game that much :'( ",
     "Q9Prompt": "What do you like \n about yourself",
-    "Q9A1": "I'm smart",
-    "Q9A2": "I'm cute",
-    "Q9A3": "I'm nice",
+    "Q9A1": "I'm positive",
+    "Q9A2": "I'm comppasionate",
+    "Q9A3": "I Never give up",
     "Q9A4": "All of the above ;) ",
+    "Q10Prompt": "Do you have a chance to use online advertising?",
+    "Q10A1": "Yes",
+    "Q10A2": "No",
     "lastQPrompt": "What's your job?",
     "lastQPlaceholder": "Pixel architect",
     "yes": "Yes",
@@ -281,17 +291,17 @@
     "permissionPhoto": "写真を撮ることを\n許可しますか？",
     "pose": "カメラの前でポーズを取ってください！",
     "poseinstruction": "フレーム内に合わせて、\nカウントダウンの準備をしてください。",
-    "name": "あなたの名前を\n入力してください",
+    "name": "フルネーム（ひらがな）",
     "next": "次へ",
     "gender": "性別を選択してください",
     "male":"男性",
     "female":"女性",
     "other":"その他",
     "Q3Prompt": "自分の好きなところ",
-    "Q3A1": "自然",
+    "Q3A1": "山",
     "Q3A2": "海",
-    "Q3A3": "街",
-    "Q3A4": "私の部屋",
+    "Q3A3": "都会",
+    "Q3A4": "自分の家・部屋",
     "Q4Prompt": "得意なこと",
     "Q5Prompt": "行きたい場所",
     "Q5A1": "アジアまたはオセアニア",
@@ -299,20 +309,23 @@
     "Q5A3": "アフリカ",
     "Q5A4": "ヨーロッパ",
     "Q5A5": "南極",
-    "Q6Prompt": "好きなもの",
+    "Q6Prompt": "好きなもの・こと",
     "Q6Placeholder": "猫かな〜",
     "Q7Prompt": "夢",
     "Q7Placeholder": "Owning a unicorn",
     "Q8Prompt": "ゲームをする頻度",
     "Q8A1": "毎日",
-    "Q8A2": "毎週",
-    "Q8A3": "毎月",
+    "Q8A2": "週に1−2回",
+    "Q8A3": "月に1−2回",
     "Q8A4": "あまりゲームをしない :'( ",
     "Q9Prompt": "自分の好きな\nところ",
-    "Q9A1": "頭がいい",
-    "Q9A2": "可愛い",
-    "Q9A3": "優しい",
-    "Q9A4": "全部当てはまる ;)  ",
+    "Q9A1": "前向き",
+    "Q9A2": "思いやりがある",
+    "Q9A3": "決してあきらめない",
+    "Q9A4": "全部！ ",
+    "Q10Prompt": "オンライン広告を利用する機会はありますか？",
+    "Q10A1": "はい",
+    "Q10A2": "いいえ",
     "lastQPrompt": "職業なんでしょうか",
     "lastQPlaceholder": "Pixel architect",
     "submit": "送信",
