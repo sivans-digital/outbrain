@@ -49,6 +49,20 @@ body {
     margin: 0 auto;
 }
 
+#logoContainer {
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: auto;
+    display: none;  /* Initially hidden */
+}
+
+#teamLogo {
+    width: 100%;
+    height: auto;
+}
 
 #content {
     display: flex;
@@ -96,7 +110,7 @@ h1 {
     text-transform: uppercase;
     color: var(--main-color);
     position: absolute;
-    top: 10%; /* 10% from the top of the app container */
+    top: 15%;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;

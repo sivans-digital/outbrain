@@ -31,6 +31,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function applyTeamStyles(mainColor, logoSrc) {
         document.documentElement.style.setProperty('--main-color', mainColor);
         document.getElementById('logo').src = logoSrc;
+
+        // Show the team logo in logoContainer after page 1
+        const teamLogo = document.getElementById('teamLogo');
+        teamLogo.src = logoSrc;  // Update team logo
+        teamLogo.style.display = 'block';  // Ensure it's visible
+
         document.querySelectorAll('.lang-button, .team-card.selected, button').forEach(element => {
             element.style.backgroundColor = mainColor;
         });
@@ -95,6 +101,26 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             console.log('No more pages available.');
         }
+        showLogoAfterPage1();  // Ensure the logo is shown after page 1
+    }
+
+    function goToPage(currentPageId, nextPageId) {
+        document.getElementById(currentPageId).classList.remove('active');
+        document.getElementById(nextPageId).classList.add('active');
+        showLogoAfterPage1();  // Ensure the logo is shown after page 1
+    }
+
+    // Show logo after page 1
+    function showLogoAfterPage1() {
+        const currentPage = document.querySelector('.page.active');
+        const currentPageIndex = parseInt(currentPage.getAttribute('data-index'), 10);
+        const logoContainer = document.getElementById('logoContainer');
+
+        if (currentPageIndex > 1) {
+            logoContainer.style.display = 'block';  // Show logo after page 1
+        } else {
+            logoContainer.style.display = 'none';  // Hide logo on page 1
+        }
     }
 
     // Handle name input and store the value
@@ -110,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 return char.toUpperCase();
             });
         });
-
 
         userName = nameInput;
         selectedAnswers.name = userName;
@@ -161,12 +186,6 @@ document.addEventListener('DOMContentLoaded', function () {
             navigateToNextPage(this);
         });
     });
-
-    // Function to handle page transitions
-    function goToPage(currentPageId, nextPageId) {
-        document.getElementById(currentPageId).classList.remove('active');
-        document.getElementById(nextPageId).classList.add('active');
-    }
 
     // Navigation listeners for specific buttons
     addNavigationListener('yesButton', 'page2', 'page3');
@@ -271,8 +290,4 @@ document.addEventListener('DOMContentLoaded', function () {
             alert("An error occurred while generating your card. Please try again.");
         }
     }
-
 });
-
-
-const defaultImageUrl = 'https://emoji.discadia.com/emojis/6f7ad7bb-4cd4-4894-a0dd-b49e396bb1c0.png';

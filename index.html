@@ -14,6 +14,10 @@
             <div id="header">
                 <img id="logo" src="images/logo.png">
             </div>
+            <div id="logoContainer" style="display: none;">
+                <img id="teamLogo" src="" alt="Team Logo">
+            </div>
+
             <div align="center">
                 <!-- Page 1: Start Screen -->
                 <div id="page1" class="page active" data-index="1">
@@ -133,7 +137,7 @@
                     <button id="Q8A3" data-translate="Q8A3"></button>
                     <button id="Q8A4" data-translate="Q8A4"></button>
                 </div>     
-                
+
                 <!-- Page 12: Q9 What do you like about yourself -->
                 <div id="page12" class="page" data-index="12">
                     <h1 data-translate="Q9Prompt"></h1>
@@ -142,15 +146,15 @@
                     <button id="Q9A3" data-translate="Q9A3"></button>
                     <button id="Q9A4" data-translate="Q9A4"></button>
                 </div>                
-                
-                <!-- Page 13: Q13 -->
+
+                <!-- Page 13: Q10 Are you interested in online marketing? -->
                 <div id="page13" class="page" data-index="13">
-                    <h1 data-translate="Q9Prompt"></h1>
+                    <h1 data-translate="Q10Prompt"></h1>
                     <button id="Q10A1" data-translate="Q10A1"></button>
                     <button id="Q10A2" data-translate="Q10A2"></button>                
                 </div> 
 
-                <!-- LAST Q -->
+                <!-- LAST Q Your company's name -->
                 <div id="lastQ" class="page" data-index="14">
                     <h1 data-translate="lastQPrompt"></h1>
                     <input type="text" id="interest" placeholder="" maxlength="25" required data-translate-placeholder="likePlaceholder">
@@ -232,7 +236,7 @@
         <script src="app.js"></script>
         <script src="keyboard.js"></script>
         <script src="api.js"></script>
-        
+
 
         <!-- English JSON data -->
         <script id="en-json" type="application/json">
@@ -275,8 +279,8 @@
     "Q10Prompt": "Do you have a chance to use online advertising?",
     "Q10A1": "Yes",
     "Q10A2": "No",
-    "lastQPrompt": "What's your job?",
-    "lastQPlaceholder": "Pixel architect",
+    "lastQPrompt": "What's your company's name",
+    "lastQPlaceholder": "Outbrain",
     "yes": "Yes",
     "no": "No",
     "generating": "Generating your personalized card...",
