@@ -53,26 +53,23 @@ keys.forEach(key => {
     });
 });
 
-// AUTO FOCUS FUNCTIONALITY
+// Auto-focus input fields and display keyboard when navigating pages
 function toggleKeyboardVisibility(pageId) {
     const page = document.getElementById(pageId);
-    const inputField = page.querySelector('input[type="text"], input[type="email"]'); // Include email field too
+    const inputField = page.querySelector('input[type="text"], input[type="email"]');
 
     if (inputField) {
-        // Set focus after page transition to ensure it's visible
         setTimeout(() => {
             inputField.focus();
         }, 100);
+        keyboard.style.display = 'block';
 
-        // Display keyboard when input field is present
-        document.getElementById('keyboard').style.display = 'block';
-
-        // Bind WanaKana to the input field if Japanese is selected
+        // Bind WanaKana for Japanese input
         if (selectedLanguage === 'ja') {
             wanakana.bind(inputField, { IMEMode: true });
         }
     } else {
-        document.getElementById('keyboard').style.display = 'none';
+        keyboard.style.display = 'none';
     }
 }
 

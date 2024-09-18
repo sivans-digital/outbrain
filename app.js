@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // Navigate to the next page and ensure keyboard focus
     function navigateToNextPage(button) {
         const currentPage = button.closest('.page');
         const currentIndex = parseInt(currentPage.getAttribute('data-index'), 10);
@@ -101,13 +102,14 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             console.log('No more pages available.');
         }
-        showLogoAfterPage1();  // Ensure the logo is shown after page 1
+        showLogoAfterPage1();
     }
 
     function goToPage(currentPageId, nextPageId) {
         document.getElementById(currentPageId).classList.remove('active');
         document.getElementById(nextPageId).classList.add('active');
-        showLogoAfterPage1();  // Ensure the logo is shown after page 1
+        showLogoAfterPage1();
+        toggleKeyboardVisibility(nextPageId);  // Ensure keyboard visibility and input focus
     }
 
     // Show logo after page 1
@@ -131,12 +133,6 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('name').focus();
             return;
         }
-        document.getElementById('name').addEventListener('input', function () {
-            this.value = this.value.replace(/\b\w/g, function(char) {
-                return char.toUpperCase();
-            });
-        });
-
         userName = nameInput;
         selectedAnswers.name = userName;
         goToPage('page4', 'page5');
@@ -173,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Input field handling
     document.querySelectorAll('input[type="text"]').forEach(inputField => {
-        const nextButton = inputField.nextElementSibling;  // Assuming next button follows input
+        const nextButton = inputField.nextElementSibling;
         nextButton.addEventListener('click', function () {
             if (inputField.value.trim() === '') {
                 alert('Please fill in the field.');
@@ -181,8 +177,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            const questionId = inputField.id;  // Use input's ID as key (e.g., Q4Prompt)
-            selectedAnswers[questionId] = inputField.value.trim();  // Save the input value
+            const questionId = inputField.id;
+            selectedAnswers[questionId] = inputField.value.trim();
             navigateToNextPage(this);
         });
     });
@@ -288,6 +284,103 @@ document.addEventListener('DOMContentLoaded', function () {
         } catch (error) {
             console.error("Error during final page processing:", error);
             alert("An error occurred while generating your card. Please try again.");
+        }
+    }
+});
+
+// KEYBOARD HANDLING
+const keyboard = document.getElementById('keyboard');
+const inputFields = document.querySelectorAll('input[type="text"], input[type="email"]');
+let activeInput = null;
+
+inputFields.forEach(input => {
+    input.addEventListener('focus', function () {
+        activeInput = this;
+        document.getElementById('keyboard').style.display = 'block';
+
+        // Bind Wanakana to the focused input field for Japanese typing
+        if (selectedLanguage === 'ja' && !activeInput.hasAttribute('wanakana-bound')) {
+            wanakana.bind(activeInput, { IMEMode: true });
+            activeInput.setAttribute('wanakana-bound', 'true');
+        }
+    });
+
+    input.addEventListener('blur', function () {
+        if (selectedLanguage === 'ja' && activeInput && activeInput.hasAttribute('wanakana-bound')) {
+            wanakana.unbind(activeInput);
+            activeInput.removeAttribute('wanakana-bound');
+        }
+    });
+});
+
+// Keyboard interactions
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => {
+    key.addEventListener('click', function () {
+        if (!activeInput) return;
+
+        const keyValue = this.textContent.toLowerCase();
+
+        if (keyValue === 'space') {
+            activeInput.value += ' ';
+        } else if (keyValue === '←') {
+            activeInput.value = activeInput.value.slice(0, -1); // Handle backspace
+        } else {
+            activeInput.value += keyValue;
+        }
+
+        // If Japanese is selected, convert input using Wanakana
+        if (selectedLanguage === 'ja') {
+            const convertedValue = wanakana.toKana(activeInput.value, { IMEMode: true });
+            activeInput.value = convertedValue;
+        }
+
+        setTimeout(() => {
+            activeInput.focus();
+            activeInput.setSelectionRange(activeInput.value.length, activeInput.value.length);
+        }, 0);
+    });
+});
+
+// AUTO FOCUS FUNCTIONALITY
+function toggleKeyboardVisibility(pageId) {
+    const page = document.getElementById(pageId);
+    const inputField = page.querySelector('input[type="text"], input[type="email"]');
+
+    if (inputField) {
+        setTimeout(() => {
+            inputField.focus();
+        }, 100);
+        document.getElementById('keyboard').style.display = 'block';
+
+        // Bind WanaKana for Japanese input
+        if (selectedLanguage === 'ja') {
+            wanakana.bind(inputField, { IMEMode: true });
+        }
+    } else {
+        document.getElementById('keyboard').style.display = 'none';
+    }
+}
+
+// Bind focus and keyboard visibility after card generation for the email input
+document.getElementById('email').addEventListener('focus', function () {
+    const inputField = this;
+    setTimeout(() => {
+        inputField.focus();
+    }, 100);
+    document.getElementById('keyboard').style.display = 'block';
+});
+
+// Hide the keyboard when clicking outside of an input field
+document.addEventListener('click', function (event) {
+    if (!keyboard.contains(event.target) && !event.target.matches('input[type="text"], input[type="email"]')) {
+        keyboard.style.display = 'none';
+        if (activeInput) {
+            activeInput.blur();
+            if (selectedLanguage === 'ja') {
+                wanakana.unbind(activeInput);
+            }
+            activeInput = null;
         }
     }
 });
