@@ -14,6 +14,7 @@
 
 
 /* ---------------------------------- Media query for DESKTOP ---------------------------------- */
+
 @media (max-width: 3000px) {
 
     #app {
@@ -128,7 +129,8 @@
 }
 
 
-/* Media query for vertical touchscreen (1080x1920px) */
+/* ---------------------------------- Media query for TOUCHSCREEN ---------------------------------- */
+
 @media (min-width: 1080px) and (min-height: 1920px) {
 
     #app {
