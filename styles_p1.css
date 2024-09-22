@@ -1,4 +1,5 @@
 #page1 {
+    padding: 2vh 0;
     height: 100%;
     margin: 0px;
 }
@@ -12,102 +13,230 @@
 }
 
 
-#page1 h1 {
-    font-family: 'Audiowide', cursive;
-    text-transform: uppercase;
-    color: var(--main-color);
-    position: absolute;
-    top: 5%; /* 10% from the top of the app container */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    font-size: 2em;
-    text-align: center;
-    line-height: 1.5;
-    box-sizing: border-box; /* Ensure padding or borders don't affect the width */
-}
-#page1 h3 {
-    margin-top:25%;
-    width: 80%;
-    font-size: 1em;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+/* ---------------------------------- Media query for DESKTOP ---------------------------------- */
+@media (max-width: 3000px) {
+
+    #app {
+        max-width: 600px;
+        height: 90%;
+        overflow: hidden;
+    }
+
+    #page1 h1 {
+        font-family: 'Audiowide', cursive;
+        text-transform: uppercase;
+        color: var(--main-color);
+        position: absolute;
+        top: 4vh;
+        width: 80%;
+        font-size: clamp(16px, 4vw, 28px);
+        margin-bottom: 2vh; 
+        line-height: 1.2; 
+        text-align: center;
+    }
+
+    #page1 h3 {
+        width: 80%;
+        font-size: clamp(12px, 2.5vw, 20px); 
+        position: absolute;
+        top: 12vh;
+        text-align: center;
+        margin-top: 2vh; 
+        line-height: 1.5; 
+    }
+
+    .team-selection {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+        position: relative;
+    }
+
+    .team-card {
+        width: 250px; 
+        margin: 15px -25px;
+        position: relative;
+        top: 10vh;
+        border: 0;
+        cursor: pointer;
+        text-align: center;
+        transition: transform 0.3s ease;
+        border-radius: 15px;
+    }
+
+    .team-card img {
+        width: 100%;
+    }
+
+    .team-card:first-child {
+        transform: rotate(-10deg);
+    }
+
+    .team-card:last-child {
+        transform: rotate(10deg);
+    }
+
+    .team-card.selected {
+        transform: scale(1.1) rotate(0deg);
+        z-index: 2;
+        box-shadow: 0 0 20px 10px rgba(255, 239, 0, 1);
+        border-radius: 15px;
+    }
+
+    .team-card:first-child {
+        transform: rotate(-10deg);
+    }
+
+    .team-card:last-child {
+        transform: rotate(10deg);
+    }
+
+    .team-card.selected {
+        transform: scale(1.1) rotate(0deg); 
+        z-index: 2;
+        box-shadow: 0 0 20px 10px rgba(255, 239, 0, 1);
+        border-radius: 15px;
+    }
+
+    .language-selection {
+        display: flex;
+        justify-content: center;
+        gap: 20%; /* Add 5% space between language buttons */
+        margin-bottom: 5%; /* Ensure 5% space from the bottom */
+    }
+
+    .lang-button {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        font-size: clamp(12px, 2.5vw, 20px);
+        position: relative;
+        top: 10vh;
+        background-color: #1B2652;
+        color: white;
+        font-weight: bolder;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        z-index: 10;
+    }
 }
 
-.team-selection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 30px 0;
-    position: relative;
-}
 
-.team-card {
-    width: 250px;
-    margin: 20px -30px; /* Overlap the cards */
-    border: 0;
-    cursor: pointer;
-    text-align: center;
-    transition: transform 0.3s ease;
-    border-radius: 15px;
-}
+/* Media query for vertical touchscreen (1080x1920px) */
+@media (min-width: 1080px) and (min-height: 1920px) {
 
-.team-card img {
-    width: 100%;
-}
+    #app {
+        max-width: 900px; /* Limit app container width to 900px for vertical layout */
+        height: 80%;
+    }
 
-.team-card:first-child {
-    transform: rotate(-10deg);
-}
+    #page1 h1 {
+        font-family: 'Audiowide', cursive;
+        text-transform: uppercase;
+        color: var(--main-color);
+        position: absolute;
+        top: 5vh;
+        width: 80%;
+        font-size: clamp(28px, 6vw, 48px);
+        margin-bottom: 2vh; 
+        line-height: 1.2; 
+        text-align: center;
+    }
 
-.team-card:last-child {
-    transform: rotate(10deg);
-}
+    #page1 h3 {
+        width: 80%;
+        font-size: clamp(18px, 4vw, 32px); 
+        position: absolute;
+        top: 10vh;
+        text-align: center;
+        margin-top: 2vh; 
+        line-height: 1.5; 
+    }
 
-.team-card.selected {
-    transform: scale(1.1) rotate(0deg);
-    z-index: 2;
-    box-shadow: 0 0 20px 10px rgba(255, 239, 0, 1);
-    border-radius: 15px;
-}
+    .team-selection {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+        position: relative;
+    }
 
-.team-card:first-child {
-    transform: rotate(-10deg);
-}
+    .team-card {
+        width: 400px; 
+        margin: 15px -25px;
+        position: relative;
+        top: 3vh;
+        border: 0;
+        cursor: pointer;
+        text-align: center;
+        transition: transform 0.3s ease;
+        border-radius: 15px;
+    }
 
-.team-card:last-child {
-    transform: rotate(10deg);
-}
+    .team-card img {
+        width: 100%;
+    }
 
-.team-card.selected {
-    transform: scale(1.1) rotate(0deg); 
-    z-index: 2;
-    box-shadow: 0 0 20px 10px rgba(255, 239, 0, 1);
-    border-radius: 15px;
-}
+    .team-card:first-child {
+        transform: rotate(-10deg);
+    }
 
-.language-selection {
-    display: flex;
-    justify-content: center;
-    gap: 10%; /* Add 5% space between language buttons */
-    margin-bottom: 5%; /* Ensure 5% space from the bottom */
-}
+    .team-card:last-child {
+        transform: rotate(10deg);
+    }
 
-.lang-button {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%; /* Make buttons round */
-    flex-shrink: 0; /* Prevent buttons from shrinking */
-    background-color: #1B2652;
-    color: white;
-    font-size: 1rem;
-    font-weight: bolder;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0; /* Remove other margins */
-    z-index: 10; /* Ensure it's on top */
+    .team-card.selected {
+        transform: scale(1.1) rotate(0deg);
+        z-index: 2;
+        box-shadow: 0 0 20px 10px rgba(255, 239, 0, 1);
+        border-radius: 15px;
+    }
+
+    .team-card:first-child {
+        transform: rotate(-10deg);
+    }
+
+    .team-card:last-child {
+        transform: rotate(10deg);
+    }
+
+    .team-card.selected {
+        transform: scale(1.1) rotate(0deg); 
+        z-index: 2;
+        box-shadow: 0 0 20px 10px rgba(255, 239, 0, 1);
+        border-radius: 15px;
+    }
+
+    .language-selection {
+        display: flex;
+        justify-content: center;
+        gap: 20%; /* Add 5% space between language buttons */
+        margin-bottom: 5%; /* Ensure 5% space from the bottom */
+    }
+
+    .lang-button {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        font-size: clamp(16px, 4vw, 32px);
+        position: relative;
+        top: 10vh;
+        background-color: #1B2652;
+        color: white;
+        font-weight: bolder;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        z-index: 10;
+    }
 }

@@ -11,9 +11,7 @@
     </head>
     <body>
         <div id="app">
-            <div id="header">
-                <img id="logo" src="images/logo.png">
-            </div>
+
             <div id="logoContainer" style="display: none;">
                 <img id="teamLogo" src="" alt="Team Logo">
             </div>
@@ -21,7 +19,7 @@
             <div align="center">
                 <!-- Page 1: Start Screen -->
                 <div id="page1" class="page active" data-index="1">
-                    <h1>Be the Headline<br>見出しになる</h1>
+                    <h1>create your own card<br>オリジナルカードを作ろう</h1>
                     <h3>Choose a team & create your unique player card<br>チームを選んであなたのユニークな<br>プレイヤーカードを作成する</h3>
 
                     <div class="team-selection">
@@ -50,10 +48,26 @@
                     </script>
                 </div>
 
+                <!-- Page 1B: T&C -->
+                <div id="page1B" class="page" data-index="2">
+                    <h1 data-translate="TnC"></h1>
+                    <h3 data-translate="conditions" style="text-align: left;"></h3>
+                    <p data-translate="conditionsDisclaimer"></p>
+
+                    <div class="checkbox-container">
+                        <input style="width: 3%;" type="checkbox" id="confirmCheckbox"> 
+                        <label for="confirmCheckbox" data-translate="cbLabel"></label>
+                    </div>
+
+                    <button id="TnCnext" data-translate="letsGo" disabled></button>
+                </div>
+
                 <!-- Page 2: Permission to Take Photo -->
-                <div id="page2"  class="page" data-index="2">
+                <div id="page2"  class="page" data-index="3">
 
                     <h1 data-translate="permissionPhoto"></h1>
+                    <p data-translate="photoDisclaimer"></p> <!--FIX THIS PART-->
+
                     <div class="language-selection">
                         <button id="yesButton" data-translate="yes"></button>
                         <button id="noButton" data-translate="no"></button>
@@ -61,7 +75,7 @@
                 </div>
 
                 <!-- Page 3: Camera Capture -->
-                <div id="page3" class="page"data-index="3">
+                <div id="page3" class="page"data-index="4">
                     <h1 data-translate="pose">Pose for the camera!</h1>
                     <h3 data-translate="poseinstruction">Align yourself in the frame and get ready for the countdown.</h3>
                     <div id="videoContainer" style="position: relative; display: inline-block;">
@@ -70,11 +84,11 @@
                             <span id="countdownText" style="text-align: center">5</span>
                         </div>
                     </div>
-                    <button id="captureButton" class="position-bottom">Take Photo</button>
+                    <button id="captureButton" class="position-bottom" data-translate="takePhoto"></button>
                 </div>
 
                 <!-- Page 4: Q1 Name Input -->
-                <div id="page4" class="page" data-index="4">
+                <div id="page4" class="page" data-index="5">
                     <h1 data-translate="name"></h1>
                     <input type="text" id="name" placeholder="Lara Croft" maxlength="25" required>
                     <button id="next4" data-translate="next" class="next-button position-bottom">Next</button>
@@ -82,7 +96,7 @@
 
 
                 <!-- Page 5: Q2 Gender Selection -->
-                <div id="page5" class="page" data-index="5">
+                <div id="page5" class="page" data-index="6">
                     <h1 data-translate="gender">Select Your Gender</h1>
                     <button id="maleButton" data-translate="male">Male</button>
                     <button id="femaleButton" data-translate="female">Female</button>
@@ -90,7 +104,7 @@
                 </div>
 
                 <!-- Page 6: Q3 A place you like -->
-                <div id="page6" class="page" data-index="6">
+                <div id="page6" class="page" data-index="7">
                     <h1 data-translate="Q3Prompt"></h1>
                     <button id="Q3A1" data-translate="Q3A1"></button>
                     <button id="Q3A2" data-translate="Q3A2"></button>
@@ -99,14 +113,14 @@
                 </div>
 
                 <!-- Page 7: Q4 Something you are good at -->
-                <div id="page7" class="page" data-index="7">
+                <div id="page7" class="page" data-index="8">
                     <h1 data-translate="Q4Prompt"></h1>
                     <input type="text" id="Q4Prompt" placeholder="" maxlength="25" required data-translate-placeholder="likePlaceholder">
                     <button id="next" data-translate="next" class="next-button position-bottom">Next</button>
                 </div>
 
                 <!-- Page 8: Q5 Where would you like to go? -->
-                <div id="page8" class="page" data-index="8">
+                <div id="page8" class="page" data-index="9">
                     <h1 data-translate="Q5Prompt"></h1>
                     <button id="Q5A1" data-translate="Q5A1"></button>
                     <button id="Q5A2" data-translate="Q5A2"></button>
@@ -116,36 +130,29 @@
                 </div>              
 
                 <!-- Page 9: Q6 Something you like -->
-                <div id="page9" class="page" data-index="9">
+                <div id="page9" class="page" data-index="10">
                     <h1 data-translate="Q6Prompt"></h1>
                     <input type="text" id="Q6Prompt" placeholder="" maxlength="25" required data-translate-placeholder="likePlaceholder">
                     <button id="next" data-translate="next" class="next-button position-bottom">Next</button>
                 </div>                
 
-                <!-- Page 10: Q7 What's your biggest dream? -->
-                <div id="page10" class="page" data-index="10">
+                <!-- Page 10: Q7 What do you like about yourself -->
+                <div id="page10" class="page" data-index="11">
                     <h1 data-translate="Q7Prompt"></h1>
-                    <input type="text" id="Q7Prompt" placeholder="" maxlength="25" required data-translate-placeholder="likePlaceholder">
-                    <button id="next" data-translate="next" class="next-button position-bottom">Next</button>
+                    <button id="Q7A1" data-translate="Q7A1"></button>
+                    <button id="Q7A2" data-translate="Q7A2"></button>
+                    <button id="Q7A3" data-translate="Q7A3"></button>
+                    <button id="Q7A4" data-translate="Q7A4"></button>
                 </div>
 
                 <!-- Page 11: Q8 How often do you game? -->
-                <div id="page11" class="page" data-index="11">
+                <div id="page11" class="page" data-index="12">
                     <h1 data-translate="Q8Prompt"></h1>
                     <button id="Q8A1" data-translate="Q8A1"></button>
                     <button id="Q8A2" data-translate="Q8A2"></button>
                     <button id="Q8A3" data-translate="Q8A3"></button>
                     <button id="Q8A4" data-translate="Q8A4"></button>
-                </div>     
-
-                <!-- Page 12: Q9 What do you like about yourself -->
-                <div id="page12" class="page" data-index="12">
-                    <h1 data-translate="Q9Prompt"></h1>
-                    <button id="Q9A1" data-translate="Q9A1"></button>
-                    <button id="Q9A2" data-translate="Q9A2"></button>
-                    <button id="Q9A3" data-translate="Q9A3"></button>
-                    <button id="Q9A4" data-translate="Q9A4"></button>
-                </div>                
+                </div>                     
 
                 <!-- Page 13: Q10 Are you interested in online marketing? -->
                 <div id="page13" class="page" data-index="13">
@@ -164,7 +171,7 @@
                 <!-- Loading Screen -->
                 <div id="pageLoading" class="page" data-index="15">
                     <h1 data-translate="generating">Generating your personalized card...</h1>
-                    <h3>We will work on a solution to shorten the<br>wait time once we have all the questions</h3>
+                    <h3 data-translate="wait"></h3>
                     <div class="container">
                         <div class="box">
                             <div class="loader1"></div>
@@ -173,7 +180,7 @@
                 </div>
 
                 <!-- Page Last: Result - Displaying the Card -->
-                <div id="pageLast" class="page" data-index="15">
+                <div id="pageLast" class="page" data-index="16">
                     <div id="card">
                         <div id="cardName"></div> <!-- This is where the name will be displayed -->
                         <img id="generatedImage">
@@ -225,7 +232,9 @@
                         <button class="key">←</button> <!-- Backspace -->
                     </div>
                     <div class="keyboard-row">
-                        <button class="key" style="width: 100px;">Space</button>
+                        <button class="key">-</button>
+                        <button class="key" style="width: 50%;">Space</button>
+                        <button class="key">@</button>
                     </div>
                 </div>
             </div>
@@ -241,9 +250,16 @@
         <!-- English JSON data -->
         <script id="en-json" type="application/json">
 {
+    "TnC": "Terms and Conditions",
+    "conditions": "The information you enter in this game will be used for the purpose of generating digital cards and sending it to you, as well as for Outbrain's marketing and sales activities. In addition, image data will not be saved and will not be used for any activities.",
+    "conditionsDisclaimer": "For details, please see Outbrain's Privacy Policy (https://www.outbrain.com/privacy/)",
+    "cbLabel": "Confirmed",
+    "letsGo": "Let's go!",
     "permissionPhoto": "Can we take a photo?",
+    "photoDisclaimer": "*Your photo won't be stored",
     "pose": "Pose for the camera!",
     "poseinstruction": "Get ready! You have 5 seconds and only one chance",
+    "takePhoto": "Take Photo",
     "name": "Please enter your full name",
     "next": "Next",
     "gender": "Select Your Gender",
@@ -264,18 +280,16 @@
     "Q5A5": "Antartica",
     "Q6Prompt": "Something you like?",
     "Q6Placeholder": "Cats, maybe?",
-    "Q7Prompt": "What's your biggest dream?",
-    "Q7Placeholder": "Owning a unicorn",
+    "Q7Prompt": "What do you like \n about yourself",
+    "Q7A1": "I'm positive",
+    "Q7A2": "I'm compassionate",
+    "Q7A3": "I Never give up",
+    "Q7A4": "All of the above",
     "Q8Prompt": "How often do you game?",
     "Q8A1": "Every day",
     "Q8A2": "Weekly",
     "Q8A3": "Monthly",
     "Q8A4": "I don't game that much :'( ",
-    "Q9Prompt": "What do you like \n about yourself",
-    "Q9A1": "I'm positive",
-    "Q9A2": "I'm comppasionate",
-    "Q9A3": "I Never give up",
-    "Q9A4": "All of the above ;) ",
     "Q10Prompt": "Do you have a chance to use online advertising?",
     "Q10A1": "Yes",
     "Q10A2": "No",
@@ -292,45 +306,51 @@
         <!-- Japanese JSON data -->
         <script id="ja-json" type="application/json">
 {
-    "permissionPhoto": "写真を撮ることを\n許可しますか？",
-    "pose": "カメラの前でポーズを取ってください！",
-    "poseinstruction": "フレーム内に合わせて、\nカウントダウンの準備をしてください。",
-    "name": "フルネーム（ひらがな）",
+    "permissionPhoto": "写真を撮りますか？",
+    "TnC": "利用規約",
+    "conditions": "このゲームで入力いただく情報は、デジタルカード生成/及びお客様ご自身へ送付する目的、及び、Outbrainのマーケティング・セールス活動のために使用させていただきます。尚、画像データは保存せず、いかなる活動にも利用いたしません。",
+    "conditionsDisclaimer": "詳細はOutbrain プライバシーポリシー(https://www.outbrain.com/privacy/) をご覧下さい。",
+    "cbLabel": " 確認しました",
+    "letsGo": "次へ進む",
+    "photoDisclaimer": "※画像は保存されません",
+    "pose": "カメラに向かって\nポーズを取ってください！",
+    "poseinstruction": "「写真を撮る」ボタンを押すと、\nカウントダウン（５秒）が始まります",
+    "takePhoto": "写真を撮る",
+    "name": "フルネーム（ひらがな）を\n入力してください",
     "next": "次へ",
     "gender": "性別を選択してください",
     "male":"男性",
     "female":"女性",
     "other":"その他",
-    "Q3Prompt": "自分の好きなところ",
+    "Q3Prompt": "好きな場所を教えてください",
     "Q3A1": "山",
     "Q3A2": "海",
     "Q3A3": "都会",
     "Q3A4": "自分の家・部屋",
-    "Q4Prompt": "得意なこと",
-    "Q5Prompt": "行きたい場所",
+    "Q4Prompt": "得意なことを教えてください",
+    "Q5Prompt": "行きたい場所はどこですか",
     "Q5A1": "アジアまたはオセアニア",
     "Q5A2": "アメリカ大陸",
     "Q5A3": "アフリカ",
     "Q5A4": "ヨーロッパ",
     "Q5A5": "南極",
-    "Q6Prompt": "好きなもの・こと",
+    "Q6Prompt": "好きなもの（こと）は\nなんですか",
     "Q6Placeholder": "猫かな〜",
-    "Q7Prompt": "夢",
+    "Q7Prompt": "自分の好きなところは\nどこですか",
     "Q7Placeholder": "Owning a unicorn",
-    "Q8Prompt": "ゲームをする頻度",
+    "Q7A1": "前向き",
+    "Q7A2": "思いやりがある",
+    "Q7A3": "決してあきらめない",
+    "Q7A4": "全部！ ",
+    "Q8Prompt": "どのくらいゲームをしますか",
     "Q8A1": "毎日",
     "Q8A2": "週に1−2回",
     "Q8A3": "月に1−2回",
-    "Q8A4": "あまりゲームをしない :'( ",
-    "Q9Prompt": "自分の好きな\nところ",
-    "Q9A1": "前向き",
-    "Q9A2": "思いやりがある",
-    "Q9A3": "決してあきらめない",
-    "Q9A4": "全部！ ",
-    "Q10Prompt": "オンライン広告を利用する機会はありますか？",
+    "Q8A4": "あまりゲームはしない",
+    "Q10Prompt": "オンライン広告を利用する\n機会はありますか？",
     "Q10A1": "はい",
     "Q10A2": "いいえ",
-    "lastQPrompt": "職業なんでしょうか",
+    "lastQPrompt": "会社名を教えてください",
     "lastQPlaceholder": "Pixel architect",
     "submit": "送信",
     "like": "好きな物は？",
