@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function applyTeamStyles(mainColor, logoSrc) {
         document.documentElement.style.setProperty('--main-color', mainColor);
         // Update the correct logo container
-        const logoElement = document.getElementById('teamLogo');
+        let logoElement = document.getElementById('teamLogo');
         if (logoElement) {
             logoElement.src = logoSrc; // Ensure you're updating the correct image element
         }
