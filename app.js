@@ -1,8 +1,8 @@
-// Declare selectedLanguage globally at the top of app.js
-let selectedLanguage = '';
+let selectedLanguage = ''; // Global declaration
 
 document.addEventListener('DOMContentLoaded', function () {
     let selectedTeam = '';
+    let selectedTeamColor = '#9C9C9C'; // Default color
     let selectedGender = '';
     let selectedAnswers = {};
     let userName = '';
@@ -13,14 +13,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     outbrainTeam.addEventListener('click', function () {
         selectedTeam = 'outbrain';
+        selectedTeamColor = '#EE6513'; // Outbrain team color
         highlightSelectedTeam(outbrainTeam, onyxTeam);
-        applyTeamStyles('#EE6513', 'images/logo_OB.png');
+        applyTeamStyles(selectedTeamColor, 'images/logo_OB.png');
     });
 
     onyxTeam.addEventListener('click', function () {
         selectedTeam = 'onyx';
+        selectedTeamColor = '#3BD4AE'; // Onyx team color
         highlightSelectedTeam(onyxTeam, outbrainTeam);
-        applyTeamStyles('#3BD4AE', 'images/logo_Onyx.png');
+        applyTeamStyles(selectedTeamColor, 'images/logo_Onyx.png');
     });
 
     function highlightSelectedTeam(selectedCard, otherCard) {
@@ -30,18 +32,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function applyTeamStyles(mainColor, logoSrc) {
         document.documentElement.style.setProperty('--main-color', mainColor);
-        document.getElementById('logo').src = logoSrc;
+        // Update the correct logo container
+        const logoElement = document.getElementById('teamLogo');
+        if (logoElement) {
+            logoElement.src = logoSrc; // Ensure you're updating the correct image element
+        }
 
-        // Show the team logo in logoContainer after page 1
-        const teamLogo = document.getElementById('teamLogo');
-        teamLogo.src = logoSrc;  // Update team logo
-        teamLogo.style.display = 'block';  // Ensure it's visible
-
-        document.querySelectorAll('.lang-button, .team-card.selected, button').forEach(element => {
+        // Update the button and selected team card styles
+        document.querySelectorAll('.lang-button, .team-card.selected').forEach(element => {
             element.style.backgroundColor = mainColor;
         });
     }
-
     // Language selection handling
     document.getElementById('englishButton').addEventListener('click', function () {
         if (selectedTeam) {
@@ -84,27 +85,39 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Event listener for all 'Next' buttons using the common class
-    document.querySelectorAll('.next-button').forEach(button => {
-        button.addEventListener('click', function () {
-            navigateToNextPage(this);
-        });
-    });
+    // T&C checkbox and button logic
+    const confirmCheckbox = document.getElementById('confirmCheckbox');
+    const TnCnextButton = document.getElementById('TnCnext');
 
-    // Navigate to the next page and ensure keyboard focus
-    function navigateToNextPage(button) {
-        const currentPage = button.closest('.page');
-        const currentIndex = parseInt(currentPage.getAttribute('data-index'), 10);
-        const nextPage = document.querySelector(`.page[data-index="${currentIndex + 1}"]`);
-
-        if (nextPage) {
-            goToPage(currentPage.id, nextPage.id);
-        } else {
-            console.log('No more pages available.');
-        }
-        showLogoAfterPage1();
+    // Initialize the button as disabled
+    function initializeButton() {
+        TnCnextButton.disabled = true;
+        TnCnextButton.style.backgroundColor = '#9C9C9C'; // Set disabled color
+        TnCnextButton.style.cursor = 'not-allowed';
     }
 
+    // Initialize the button state when the page is loaded
+    initializeButton();
+
+    // Checkbox change listener to toggle button state
+    confirmCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            TnCnextButton.disabled = false;
+            TnCnextButton.style.backgroundColor = selectedTeamColor; // Change to team color
+            TnCnextButton.style.cursor = 'pointer';
+        } else {
+            initializeButton(); // Reset button to disabled state
+        }
+    });
+
+    // Button click event to navigate to page2
+    TnCnextButton.addEventListener('click', function () {
+        if (!TnCnextButton.disabled) {
+            goToPage('page1B', 'page2');
+        }
+    });
+
+    // Navigation function
     function goToPage(currentPageId, nextPageId) {
         document.getElementById(currentPageId).classList.remove('active');
         document.getElementById(nextPageId).classList.add('active');
@@ -183,15 +196,33 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Navigation listeners for specific buttons
-    addNavigationListener('yesButton', 'page2', 'page3');
-    addNavigationListener('noButton', 'page2', 'page4');
-
-    function addNavigationListener(buttonId, currentPageId, nextPageId) {
-        document.getElementById(buttonId).addEventListener('click', function () {
-            goToPage(currentPageId, nextPageId);
+    // Event listener for all 'Next' buttons using the common class
+    document.querySelectorAll('.next-button').forEach(button => {
+        button.addEventListener('click', function () {
+            navigateToNextPage(this);
         });
+    });
+
+    // Navigate to the next page and ensure keyboard focus
+    function navigateToNextPage(button) {
+        const currentPage = button.closest('.page');
+        const currentIndex = parseInt(currentPage.getAttribute('data-index'), 10);
+        const nextPage = document.querySelector(`.page[data-index="${currentIndex + 1}"]`);
+
+
+        if (nextPage) {
+            goToPage(currentPage.id, nextPage.id);
+        } else {
+            console.log('No more pages available.');
+        }
+        showLogoAfterPage1();
     }
+
+    // Navigation listener for the "No" button to jump directly to page 4
+    document.getElementById('noButton').addEventListener('click', function () {
+        goToPage('page2', 'page4'); // Jump directly to page 4 when "No" is clicked
+    });
+
 
     // Camera Initialization
     document.getElementById('yesButton').addEventListener('click', function () {
@@ -200,19 +231,19 @@ document.addEventListener('DOMContentLoaded', function () {
             const video = document.getElementById('video');
             video.srcObject = stream;
             video.play();
-            goToPage('page2', 'page3');
+            goToPage('page2', 'page3'); // Correct navigation to camera
         })
             .catch(error => {
             console.error("Error accessing the camera: ", error);
-            alert("Unable to access the camera. Please check your settings.");
+            alert("Unable to access the camera. Please check your camera settings and permissions.");
         });
     });
 
-    // Capture button event listener for countdown and photo capture
+    // Handle camera capture
     document.getElementById('captureButton').addEventListener('click', function () {
         const countdownOverlay = document.getElementById('countdownOverlay');
         const countdownText = document.getElementById('countdownText');
-        let countdown = 3;  // Start countdown from 3 seconds
+        let countdown = 5;
 
         countdownOverlay.style.display = 'flex';
         countdownText.textContent = countdown;
@@ -250,7 +281,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('pageLoading').style.display = 'block';
 
         try {
-            // Assuming "selectedAnswers" contains all answers
             const generatedHeadline = await callOpenAIAPI('headline', selectedGender, selectedAnswers.Q3Prompt, selectedAnswers.Q4Prompt, selectedAnswers.Q5Prompt, selectedLanguage);
             document.getElementById('headline').textContent = generatedHeadline.slice(1, -1);
 
@@ -263,10 +293,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert("Failed to generate the anime image. Please try again.");
             }
 
-            // Display the stored name on the final card
             document.getElementById('cardName').textContent = userName;
 
-            // Dynamically set the logo based on selected team
             const cardLogo = document.getElementById('cardLogo');
             if (selectedTeam === 'onyx') {
                 cardLogo.src = 'images/logo_Onyx.png';
@@ -279,7 +307,6 @@ document.addEventListener('DOMContentLoaded', function () {
             finalPage.classList.remove('hidden');
             finalPage.style.display = 'block';
 
-            // Ensure the email field gains focus and the keyboard appears
             toggleKeyboardVisibility('pageLast');
         } catch (error) {
             console.error("Error during final page processing:", error);
@@ -289,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // KEYBOARD HANDLING
-const keyboard = document.getElementById('keyboard');
+// const keyboard = document.getElementById('keyboard');
 const inputFields = document.querySelectorAll('input[type="text"], input[type="email"]');
 let activeInput = null;
 
@@ -329,7 +356,6 @@ keys.forEach(key => {
             activeInput.value += keyValue;
         }
 
-        // If Japanese is selected, convert input using Wanakana
         if (selectedLanguage === 'ja') {
             const convertedValue = wanakana.toKana(activeInput.value, { IMEMode: true });
             activeInput.value = convertedValue;
@@ -353,7 +379,6 @@ function toggleKeyboardVisibility(pageId) {
         }, 100);
         document.getElementById('keyboard').style.display = 'block';
 
-        // Bind WanaKana for Japanese input
         if (selectedLanguage === 'ja') {
             wanakana.bind(inputField, { IMEMode: true });
         }
@@ -361,15 +386,6 @@ function toggleKeyboardVisibility(pageId) {
         document.getElementById('keyboard').style.display = 'none';
     }
 }
-
-// Bind focus and keyboard visibility after card generation for the email input
-document.getElementById('email').addEventListener('focus', function () {
-    const inputField = this;
-    setTimeout(() => {
-        inputField.focus();
-    }, 100);
-    document.getElementById('keyboard').style.display = 'block';
-});
 
 // Hide the keyboard when clicking outside of an input field
 document.addEventListener('click', function (event) {
@@ -384,3 +400,94 @@ document.addEventListener('click', function (event) {
         }
     }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    let selectedTeam = '';
+    let selectedTeamColor = '#9C9C9C'; // Default color
+
+    // Hide the logo on page 1 and display it on other pages
+    function showLogoAfterPage1() {
+        const currentPage = document.querySelector('.page.active');
+        const currentPageIndex = parseInt(currentPage.getAttribute('data-index'), 10);
+        const header = document.getElementById('header');
+        const logo = document.getElementById('logo');
+
+        if (currentPageIndex > 1) {
+            header.style.display = 'block';  // Show logo after page 1
+            logo.style.display = 'block';    // Ensure the logo is visible
+        } else {
+            header.style.display = 'none';   // Hide logo on page 1
+            logo.style.display = 'none';     // Hide logo on page 1
+        }
+    }
+
+    // Team selection handling
+    const outbrainTeam = document.getElementById('outbrainTeam');
+    const onyxTeam = document.getElementById('onyxTeam');
+
+    outbrainTeam.addEventListener('click', function () {
+        selectedTeam = 'outbrain';
+        selectedTeamColor = '#EE6513'; // Outbrain team color
+        applyTeamStyles(selectedTeamColor, 'images/logo_OB.png');
+    });
+
+    onyxTeam.addEventListener('click', function () {
+        selectedTeam = 'onyx';
+        selectedTeamColor = '#3BD4AE'; // Onyx team color
+        applyTeamStyles(selectedTeamColor, 'images/logo_Onyx.png');
+    });
+
+    function applyTeamStyles(mainColor, logoSrc) {
+        document.documentElement.style.setProperty('--main-color', mainColor);
+        document.getElementById('logo').src = logoSrc; // Dynamically change the logo
+        document.querySelectorAll('.lang-button, .team-card.selected').forEach(element => {
+            element.style.backgroundColor = mainColor;
+        });
+    }
+
+    // Trigger page transition and update logo visibility
+    function goToPage(currentPageId, nextPageId) {
+        document.getElementById(currentPageId).classList.remove('active');
+        document.getElementById(nextPageId).classList.add('active');
+        showLogoAfterPage1();  // Check logo visibility when changing pages
+    }
+
+    // Additional logic here...
+
+    // On team selection or language selection, navigate to the next page
+    document.getElementById('englishButton').addEventListener('click', function () {
+        if (selectedTeam) {
+            goToPage('page1', 'page1B');
+        } else {
+            alert('Please select a team first.');
+        }
+    });
+
+    document.getElementById('japaneseButton').addEventListener('click', function () {
+        if (selectedTeam) {
+            goToPage('page1', 'page1B');
+        } else {
+            alert('まずチームを選んでください');
+        }
+    });
+});
+
+document.getElementById('downloadButton').addEventListener('click', function () {
+    const downloadButton = this;
+    let countdown = 3;  // Start countdown from 3 seconds
+    
+    // Change the button text to "Thank you <br> returning to homepage in X seconds"
+    downloadButton.innerHTML = `Thank you <br> returning to homepage in ${countdown}`;
+    
+    // Start the countdown
+    const countdownInterval = setInterval(function () {
+        countdown--;  // Decrease countdown by 1
+        downloadButton.innerHTML = `Thank you <br> returning to homepage in ${countdown}`;  // Update button text
+        
+        if (countdown === 0) {
+            clearInterval(countdownInterval);  // Stop the countdown
+            window.location.reload();  // Reload the page to return to page1
+        }
+    }, 1000);  // 1000 milliseconds = 1 second
+});
+

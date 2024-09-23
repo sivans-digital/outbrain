@@ -1,153 +1,6 @@
-:root {
-    --main-color: #EE6513;
-}
+/* ---------------------------------- Media query for TOUCHSCREEN ---------------------------------- */
 
-body {
-    font-family: 'Sofia Pro', 'Arial', sans-serif;
-    background-color: #f7f7f7;
-    color: #1B2652;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('images/BG.png');
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-}
-
-/* LOADER */
-
-.container {
-    text-align: center;
-    background-color: white;
-    overflow: hidden;
-}
-
-.box {
-    display: inline-block;
-    height: 200px;
-    width: 100%;
-    position: relative;
-    transition: all .2s ease;
-}
-
-#pageLoading {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-}
-
-.loader1 {
-    position: relative;
-    height: 80px;
-    width: 80px;
-    border-radius: 80px;
-    border: 3px solid var(--main-color);
-    top: calc(50% - 43px);
-    left: calc(50% - 43px);
-    transform-origin: 50% 50%;
-    animation: loader1 3s linear infinite;
-}
-
-.loader1:after {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: 20px;
-    width: 11px;
-    height: 11px;
-    border-radius: 10px;
-    background-color: var(--main-color); /* Remove 'solid' */
-}
-
-@keyframes loader1 {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/*KEYBOARD*/
-
-#keyboard {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    padding: 5px;
-    background-color: #1B2652;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    transition: opacity 0.3s ease;
-    border-radius: 5px; /* Optional: add some border radius to make it look better */
-}
-
-.keyboard-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-}
-
-.key {
-    padding: 15px;
-    margin: 2px; /* Add a small margin to ensure keys don’t touch each other */
-    background-color: var(--main-color);
-    color: white;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    flex: 1; /* Make the keys flexible to fill the row */
-    text-align: center;
-    box-sizing: border-box; /* Ensure padding and border are included in the width/height */
-    white-space: pre-wrap;
-}
-
-.key:active {
-    background-color: var(--main-color);
-}
-
-@import url(https://fonts.googleapis.com/css?family=Comfortaa:400,700,300);
-
-*,html{margin:0;padding:0}
-
-//variables
-$baseColor : #e74c3c;
-$fontColor : #fff;
-
-body{
-    background: $baseColor;
-    text-align: center;
-    font-family: 'Comfortaa', cursive;
-}
-svg{
-    width: 100px;
-    height: 100px;
-    margin: 20px;
-    display:inline-block;
-}
-
-.page {
-    width: 100%;
-    height: 100%;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.page.active {
-    display: flex; 
-}
-
-
-/* ---------------------------------- Media query for DESKTOP ---------------------------------- */
-
-@media (max-width: 3000px) {
+@media (min-width: 1080px) and (min-height: 1920px) {
 
     #app {
         width: 100%;
@@ -213,7 +66,7 @@ svg{
         height: auto;
     }
 
-    /* ------------------------ TEXT for DESKTOP ------------------------ */
+    /* ------------------------ TEXT for TOUCHSCREEN ------------------------ */
 
     h1 {
         font-family: 'Audiowide', 'Impact', cursive;
@@ -223,21 +76,11 @@ svg{
         top: 15vh;
         left: 50%;
         transform: translateX(-50%);
-        font-size: clamp(28px, 4vw, 36px);
+        font-size: clamp(28px, 6vw, 48px);
         width: 80%;
         text-align: center;
         line-height: 1;
         box-sizing: border-box;
-    }
-
-    #page3 h1 {
-        top: 15vh;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: clamp(28px, 4vw, 36px);
-        width: 80%;
-        text-align: center;
-        line-height: 1;
     }
 
     h2 {
@@ -251,6 +94,7 @@ svg{
         color: #1B2652;
         font-size: clamp(12px, 2vw, 18px);
         margin: 10px 0;
+        padding: 1vh;
         width: 80%;
         text-align: center;
         position: relative;
@@ -258,7 +102,7 @@ svg{
     }
 
     h6 {
-        font-size: clamp(12px, 1.5vw, 18px);
+        font-size: clamp(16px, 2vw, 26px);
         color: #1B2652;
         position: absolute;
         top: 25vh;
@@ -273,14 +117,26 @@ svg{
         text-align: center;
     }
 
+    #page3 h1 {
+        top: 15vh;
+        font-weight: bolder;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: clamp(28px, 4vw, 36px);
+        width: 80%;
+        text-align: center;
+        line-height: 1;
+    }
+
+
     button {
         font-family: 'Audiowide', 'Impact', cursive;
         text-transform: uppercase;
-        margin: 10px 0;
+        margin: 3% 0;
         width: 50%;
         display: block;
         padding: 3% 0;
-        font-size: clamp(12px, 3vw, 20px);
+        font-size: 2.5vw;
         font-weight: bolder;
         background-color: var(--main-color);
         color: white;
@@ -365,11 +221,11 @@ svg{
     }
 
 
-    /* ------------------------ CARD STYLES for DESKTOP ------------------------ */
+    /* ------------------------ CARD STYLES for TOUCHSCREEN ------------------------ */
 
     #card {
-        width: 40%;
-        max-width: 275px;
+        width: 50%;
+        max-width: 450px;
         aspect-ratio: 822 / 1122;
         background-color: var(--main-color);
         border-radius: 15px;
@@ -409,7 +265,7 @@ svg{
         position: absolute;
         top: 64%;
         text-transform: uppercase;
-        font-size: clamp(10px, 1vw, 16px);
+        font-size: 1.5vw;
         color: #FFEF9D;
         font-family: Avenir, Arial, sans-serif;
         text-align: left;
@@ -419,7 +275,7 @@ svg{
         position: absolute;
         top: 68%;
         text-align: left;
-        font-size: clamp(16px, 3vw, 26px);
+        font-size: 3vw;
         width: 90%;
         font-family: Avenir, Arial, sans-serif;
         color: white;
@@ -436,16 +292,30 @@ svg{
     #emailContainer {
         position: relative;
         padding: 3% 0;
+        margin: 3% 0;
         top: 50%;
+        width: 80%;
         z-index: 5;
     }
 
-    #buttonContainer button {
+    #emailContainer input {
+        position: relative;
+        padding: 3% 0;
+        top: 50%;
+        width: 80%;
+        z-index: 5;
+    }
+
+    #buttonContainer {
         position: relative;
         width: 80%;
         padding: 3% 3%;
-        margin-top: 25%;
-        top: 65%;
+        margin: 3% 0;
+        top: 70%;
+        z-index: 5;
+    }   
+    
+    #buttonContainer button {
         z-index: 5;
     }
 }

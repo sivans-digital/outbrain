@@ -30,6 +30,8 @@
     // Generalized function to call OpenAI API
     async function callOpenAIAPI(type, gender, Q4Prompt, Q5Prompt, advice, language) {
         const prompt = await generatePrompt(type, gender, Q4Prompt, Q5Prompt, advice, language);
+        
+        console.log('Sending prompt to API:', prompt);
 
         try {
             const response = await fetch("https://api.openai.com/v1/chat/completions", {
