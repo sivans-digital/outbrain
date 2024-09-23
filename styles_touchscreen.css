@@ -316,6 +316,7 @@
     }   
     
     #buttonContainer button {
+        margin: 3% 0;
         z-index: 5;
     }
 }
