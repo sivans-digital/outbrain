@@ -67,7 +67,7 @@
                 <div id="page2"  class="page" data-index="3">
 
                     <h1 data-translate="permissionPhoto"></h1>
-                    <p data-translate="photoDisclaimer"></p> <!--FIX THIS PART-->
+                    <h6 data-translate="photoDisclaimer"></h6> <!--FIX THIS PART-->
 
                     <div class="language-selection">
                         <button id="yesButton" data-translate="yes"></button>
@@ -77,14 +77,14 @@
 
                 <!-- Page 3: Camera Capture -->
                 <div id="page3" class="page"data-index="4">
-                    <h1 data-translate="pose">Pose for the camera!</h1>
-                    <h3 data-translate="poseinstruction">Align yourself in the frame and get ready for the countdown.</h3>
+                    <h1 data-translate="pose"></h1>
                     <div id="videoContainer" style="position: relative; display: inline-block;">
                         <video id="video" autoplay></video>
                         <div id="countdownOverlay" style="display: none;">
                             <span id="countdownText" style="text-align: center">5</span>
                         </div>
                     </div>
+                    <h3 data-translate="poseinstruction"></h3>
                     <button id="captureButton" class="position-bottom" data-translate="takePhoto"></button>
                 </div>
 
@@ -94,7 +94,6 @@
                     <input type="text" id="name" placeholder="Lara Croft" maxlength="25" required>
                     <button id="next4" data-translate="next" class="next-button position-bottom">Next</button>
                 </div>
-
 
                 <!-- Page 5: Q2 Gender Selection -->
                 <div id="page5" class="page" data-index="6">
@@ -193,7 +192,7 @@
                         <input type="email" id="email" placeholder="Email" required>
                     </div>
                     <div id="buttonContainer">
-                        <button id="downloadButton">Send My Card</button>
+                        <button id="downloadButton" data-translate="send"></button>
                     </div>
                 </div>
 
@@ -230,7 +229,7 @@
                         <button class="key">B</button>
                         <button class="key">N</button>
                         <button class="key">M</button>
-                        <button class="key">←</button> <!-- Backspace -->
+                        <button class="key">←</button>
                     </div>
                     <div class="keyboard-row">
                         <button class="key">-</button>
@@ -290,7 +289,7 @@
     "Q8A1": "Every day",
     "Q8A2": "Weekly",
     "Q8A3": "Monthly",
-    "Q8A4": "I don't game that much :'( ",
+    "Q8A4": "I don't game much",
     "Q10Prompt": "Do you have a chance to use online advertising?",
     "Q10A1": "Yes",
     "Q10A2": "No",
@@ -299,7 +298,8 @@
     "yes": "Yes",
     "no": "No",
     "generating": "Generating your personalized card...",
-    "wait": "Please wait a moment ˖✧˖°☆'(>∀< )"
+    "wait": "Please wait a moment ˖✧˖°☆",
+    "send": "Send My Card"
 
 }
         </script>
@@ -360,7 +360,8 @@
     "no": "いいえ",
     "submit":"送信",
     "generating": "あなたのカードを\n生成中です...",
-    "wait": "少々お待ちください ˖✧˖°☆(>∀< )"
+    "wait": "少々お待ちください ˖✧˖°☆",
+    "send": "カードを送ってください"
 }
         </script>
 

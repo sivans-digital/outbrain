@@ -213,35 +213,31 @@ svg{
         height: auto;
     }
 
-    button {
-        font-family: 'Audiowide', cursive;
-        text-transform: uppercase;
-        margin: 10px 0;
-        width: 50%;
-        display: block;
-        padding: 10px 20px;
-        font-size: clamp(12px, 2vw, 20px);
-        background-color: var(--main-color);
-        color: white;
-        border: none;
-        border-radius: 50px;
-        cursor: pointer;
-        margin-top: 10%;
-    }
+    /* ------------------------ TEXT for DESKTOP ------------------------ */
 
     h1 {
-        font-family: 'Audiowide', cursive;
+        font-family: 'Audiowide', 'Impact', cursive;
         text-transform: uppercase;
         color: var(--main-color);
         position: absolute;
-        top: 15%;
+        top: 15vh;
         left: 50%;
         transform: translateX(-50%);
-        font-size: clamp(12px, 3vw, 22px);
+        font-size: clamp(28px, 4vw, 36px);
         width: 80%;
         text-align: center;
-        line-height: 1.5;
+        line-height: 1;
         box-sizing: border-box;
+    }
+
+    #page3 h1 {
+        top: 15vh;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: clamp(28px, 4vw, 36px);
+        width: 80%;
+        text-align: center;
+        line-height: 1;
     }
 
     h2 {
@@ -253,36 +249,44 @@ svg{
 
     h3 {
         color: #1B2652;
-        font-size: 16px;
+        font-size: clamp(12px, 2vw, 18px);
         margin: 10px 0;
         width: 80%;
+        text-align: center;
+        position: relative;
+        top: 2%;
     }
 
-    h4 {
-        font-size: 1rem;
+    h6 {
+        font-size: clamp(12px, 1.5vw, 18px);
         color: #1B2652;
-        margin-bottom: 20px;
+        position: absolute;
+        top: 25vh;
         width: 80%;
     }
 
     p {
         color: #1B2652;
-        margin-bottom: 20px;
+        top: 5%;
+        font-size: clamp(14px, 2vw, 24px);
         width: 80%;
+        text-align: center;
     }
 
-    /* Input Fields */
-    input {
-        background-color: #D9D9D9;
-        color: black;
+    button {
+        font-family: 'Audiowide', 'Impact', cursive;
+        text-transform: uppercase;
+        margin: 10px 0;
+        width: 50%;
+        display: block;
+        padding: 3% 0;
+        font-size: clamp(12px, 3vw, 20px);
+        font-weight: bolder;
+        background-color: var(--main-color);
+        color: white;
         border: none;
         border-radius: 50px;
-        padding: 15px 30px;
-        font-size: 16px;
-        width: 30%;
-        text-align: center;
         cursor: pointer;
-        margin-top: 10%;
     }
 
     #page2 button {
@@ -292,7 +296,7 @@ svg{
         flex-shrink: 0; 
         background-color: var(--main-color);
         color: white;
-        font-size: 1rem;
+        font-size: clamp(16px, 3vw, 26px);
         font-weight: bolder;
         border: none;
         cursor: pointer;
@@ -303,18 +307,69 @@ svg{
         z-index: 10;
     }
 
+    #page9 h3 {
+        align-items: center;
+        text-align: center;
+        font-size: clamp(16px, 3vw, 26px);
+    }
 
-    /* Countdown Overlay */
+    /* Input Fields */
+    input {
+        background-color: #D9D9D9;
+        color: black;
+        border: none;
+        border-radius: 50px;
+        text-align: center;
+        cursor: pointer;
+        width: 50%;
+        padding: 3% 0;
+        font-size: clamp(12px, 3vw, 20px);
+    }
+
+    /* Camera Capture Styling */
+    #videoContainer {
+        position: relative;
+        top: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+        width: 90%;
+        max-width: 500px;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    video {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+    }
+
     #countdownOverlay {
         display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(27, 38, 82, 0.5);
+        color: white;
+        font-size: 48px;
+        font-weight: bold;
+        border-radius: 15px;
     }
 
 
-    /* Card Styling */
+    /* ------------------------ CARD STYLES for DESKTOP ------------------------ */
 
     #card {
-        width: 50%;
-        max-width: 450px;
+        width: 40%;
+        max-width: 275px;
         aspect-ratio: 822 / 1122;
         background-color: var(--main-color);
         border-radius: 15px;
@@ -336,7 +391,7 @@ svg{
         left: 20px;
         font-size: 1rem;
         font-weight: bold;
-        font-family: 'Audiowide', cursive;
+        font-family: 'Audiowide', 'Impact', cursive;
     }
 
     #generatedImage {
@@ -354,16 +409,17 @@ svg{
         position: absolute;
         top: 64%;
         text-transform: uppercase;
-        font-size: 0.75rem;
+        font-size: clamp(10px, 1vw, 16px);
         color: #FFEF9D;
         font-family: Avenir, Arial, sans-serif;
+        text-align: left;
     }
 
     #headline {
         position: absolute;
         top: 68%;
         text-align: left;
-        font-size: 1rem;
+        font-size: clamp(16px, 3vw, 26px);
         width: 90%;
         font-family: Avenir, Arial, sans-serif;
         color: white;
@@ -377,152 +433,23 @@ svg{
         height: auto;
     }
 
-    .TnCnext {
-        background-color: #9C9C9C; /* Default disabled color */
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-size: 1rem;
-        cursor: not-allowed;
-        transition: background-color 0.3s ease;
-    }
-
-    .TnCnext:enabled {
-        cursor: pointer;
-    }
-
-
-    /* Email and Button Containers */
     #emailContainer {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        position: absolute;
-        top: 49%;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-    }
-
-    #buttonContainer {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        position: absolute;
-        top: 58%;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-    }
-
-    /* Camera Capture Styling */
-    #videoContainer {
         position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 20px auto;
-        width: 90%;
-        max-width: 500px;
-        overflow: hidden;
-        border-radius: 15px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 3% 0;
+        top: 50%;
+        z-index: 5;
     }
 
-    video {
-        width: 100%;
-        height: auto;
-        border-radius: 15px;
-    }
-
-    #countdownOverlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: rgba(27, 38, 82, 0.5);
-        color: white;
-        font-size: 48px;
-        font-weight: bold;
-        border-radius: 15px;
-    }
-
-
-
-
-
-    h3 {
-        width: 80%;
-        font-size: clamp(10px, 2vw, 18px);
-    }
-
-    p {
-        width: 80%;
-        font-size: clamp(10px, 2vw, 18px);
-    }
-
-    input {
-        background-color: #D9D9D9;
-        color: black;
-        border: none;
-        border-radius: 10vw;
-        padding: 3% 3%;
-        font-size: clamp(18px, 4vw, 32px);
-        width: 50%;
-        text-align: center;
-        cursor: pointer;
-    }
-
-    button {
-        font-family: 'Audiowide', cursive;
-        text-transform: uppercase;
-        margin: 10px 0;
-        border-radius: 10vw;
-        padding: 3% 3%;
-        font-size: clamp(18px, 4vw, 32px);
-        width: 50%;
-        display: block;
-        background-color: var(--main-color);
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-
-    #emailContainer {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        position: absolute;
-        top: 49%;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-        padding: 3% 3%;
-        font-size: clamp(18px, 4vw, 32px);
-        width: 50%;
-    }
-
-    #buttonContainer {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        position: absolute;
-        top: 58%;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-        padding: 3% 3%;
-        font-size: clamp(18px, 4vw, 32px);
-        width: 50%;
+    #buttonContainer button {
+        position: relative;
+        margin-top: 25%;
+        top: 65%;
+        z-index: 5;
     }
 
 
     /* Media query for vertical touchscreen (1080x1920px) */
-    @media (min-width: 1080px) {
+    @media (min-width: 1080px) and (min-height: 1920px) {
         #app {
             max-width: 900px; /* Limit app container width to 900px for vertical layout */
             height: 80%;
@@ -534,6 +461,7 @@ svg{
 
         h3 {
             font-size: clamp(18px, 4vw, 32px);
+            text-align: center;
         }
 
         p {
@@ -545,20 +473,21 @@ svg{
             color: black;
             border: none;
             border-radius: 10vw;
-            padding: 3% 3%;
-            font-size: clamp(18px, 4vw, 32px);
+            padding: 3% 0;
+            font-size: clamp(18px, 2vw, 32px);
             width: 50%;
             text-align: center;
+            border: none;
             cursor: pointer;
         }
 
         button {
-            font-family: 'Audiowide', cursive;
+            font-family: 'Audiowide', 'Impact', cursive;
             text-transform: uppercase;
             margin: 10px 0;
             border-radius: 10vw;
-            padding: 3% 3%;
-            font-size: clamp(20px, 5vw, 40px);
+            padding: 3% 0;
+            font-size: clamp(20px, 2vw, 40px);
             width: 50%;
             display: block;
             background-color: var(--main-color);
@@ -591,6 +520,6 @@ svg{
             transform: translateX(-50%);
             text-align: center;
             padding: 3% 3%;
-            font-size: clamp(18px, 4vw, 32px);
+            font-size: clamp(18px, 2vw, 32px);
             width: 50%;
         }

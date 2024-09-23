@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('captureButton').addEventListener('click', function () {
         const countdownOverlay = document.getElementById('countdownOverlay');
         const countdownText = document.getElementById('countdownText');
-        let countdown = 3;  // Start countdown from 3 seconds
+        let countdown = 5;
 
         countdownOverlay.style.display = 'flex';
         countdownText.textContent = countdown;
