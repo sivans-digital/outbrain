@@ -80,7 +80,7 @@
                 <!-- Page 4: Q1 Name Input -->
                 <div id="page4" class="page" data-index="5">
                     <h1 data-translate="name"></h1>
-                    <input type="text" id="name" placeholder="Lara Croft" maxlength="25" required>
+                    <input type="text" id="name" maxlength="25" required>
                     <button id="next4" data-translate="next" class="next-button position-bottom">Next</button>
                 </div>
 
@@ -98,13 +98,13 @@
                     <button id="Q3A1" data-translate="Q3A1" data-answer="the mountains"></button>
                     <button id="Q3A2" data-translate="Q3A2" data-answer="The ocean"></button>
                     <button id="Q3A3" data-translate="Q3A3" data-answer="The city"></button>
-                    <button id="Q3A4" data-translate="Q3A4" data-answer="staying in the bedroom"></button>
+                    <button id="Q3A4" data-translate="Q3A4" data-answer="their bedroom"></button>
                 </div>
 
                 <!-- Page 7: Q4 Something you are good at -->
                 <div id="page7" class="page" data-index="8">
                     <h1 data-translate="Q4Prompt"></h1>
-                    <input type="text" id="Q4Prompt" placeholder="" maxlength="25" required data-translate-placeholder="likePlaceholder">
+                    <input type="text" id="Q4Prompt" maxlength="25" required>
                     <button id="next" data-translate="next" class="next-button position-bottom">Next</button>
                 </div>
 
@@ -121,7 +121,7 @@
                 <!-- Page 9: Q6 Something you like -->
                 <div id="page9" class="page" data-index="10">
                     <h1 data-translate="Q6Prompt"></h1>
-                    <input type="text" id="Q6Prompt" placeholder="" maxlength="25" required data-translate-placeholder="likePlaceholder">
+                    <input type="text" id="Q6Prompt" maxlength="25" required>
                     <button id="next" data-translate="next" class="next-button position-bottom">Next</button>
                 </div>                
 
@@ -153,7 +153,7 @@
                 <!-- LAST Q Your company's name -->
                 <div id="lastQ" class="page" data-index="14">
                     <h1 data-translate="lastQPrompt"></h1>
-                    <input type="text" id="interest" placeholder="" maxlength="25" required data-translate-placeholder="likePlaceholder">
+                    <input type="text" id="interest" maxlength="25" required>
                     <button id="submit" data-translate="submit">Submit</button>
                 </div>
 
@@ -218,6 +218,7 @@
                         <button class="key">B</button>
                         <button class="key">N</button>
                         <button class="key">M</button>
+                        <button class="key">.</button>
                         <button class="key">←</button>
                     </div>
                     <div class="keyboard-row">
@@ -268,7 +269,6 @@
     "Q5A4": "Europe",
     "Q5A5": "Antartica",
     "Q6Prompt": "Something you like?",
-    "Q6Placeholder": "Cats, maybe?",
     "Q7Prompt": "What do you like \n about yourself",
     "Q7A1": "I'm positive",
     "Q7A2": "I'm compassionate",
@@ -283,7 +283,6 @@
     "Q10A1": "Yes",
     "Q10A2": "No",
     "lastQPrompt": "What's your company's name",
-    "lastQPlaceholder": "Outbrain",
     "yes": "Yes",
     "no": "No",
     "generating": "Generating your personalized card...",
@@ -325,9 +324,7 @@
     "Q5A4": "ヨーロッパ",
     "Q5A5": "南極",
     "Q6Prompt": "好きなもの（こと）は\nなんですか",
-    "Q6Placeholder": "猫かな〜",
     "Q7Prompt": "自分の好きなところは\nどこですか",
-    "Q7Placeholder": "Owning a unicorn",
     "Q7A1": "前向き",
     "Q7A2": "思いやりがある",
     "Q7A3": "決してあきらめない",
@@ -341,10 +338,8 @@
     "Q10A1": "はい",
     "Q10A2": "いいえ",
     "lastQPrompt": "会社名を教えてください",
-    "lastQPlaceholder": "Pixel architect",
     "submit": "送信",
     "like": "好きな物は？",
-    "likePlaceholder": "猫かな〜",
     "yes": "はい",
     "no": "いいえ",
     "submit":"送信",
