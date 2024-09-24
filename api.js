@@ -1,26 +1,9 @@
-<?php
-    $api_key = getenv('NEKO_CREATOR');
-?>
-
-<script type="text/javascript">
-
 (function () {
-    const OPENAI_API_KEY = '<?php echo $api_key; ?>'; // ADD API KEY
+    const OPENAI_API_KEY = NEKO_CREATOR; // ADD API KEY
 
     // Generalized function to generate prompts based on type (headline/anime)
     async function generatePrompt(type, gender, Q3Prompt, Q4Prompt, Q5Prompt, Q6Prompt, Q7Prompt, language) {
         let prompt;
-
-        console.log("generatePrompt parameters:", {
-            type,
-            gender,
-            Q3Prompt,
-            Q4Prompt,
-            Q5Prompt,
-            Q6Prompt,
-            Q7Prompt,
-            language
-        });
 
         if (type === 'headline') {
             if (language === 'ja') {
@@ -33,24 +16,22 @@
                 // Generate a mythical creature instead of a human
                 const mythicalCreatures = ['phoenix', 'unicorn', 'dragon', 'griffin', 'wolf'];
                 const selectedCreature = mythicalCreatures[Math.floor(Math.random() * mythicalCreatures.length)];
-                prompt = `Create an anime-style image description. The character is a ${selectedCreature} who likes ${Q6Prompt} and going to ${Q3Prompt} , and dreams of visiting ${Q5Prompt}. The background is related to ${Q5Prompt}. Make it fun in anime style art.`;
+                prompt = `Create an anime-style image description. The character is a ${selectedCreature} wwho likes ${Q6Prompt} and going to ${Q3Prompt} , and dreams of visiting ${Q7Prompt}. The background is related to ${Q5Prompt}. Make it fun in anime style art.`;
             } else {
                 // Generate a human character
-                prompt = `Create an anime-style image description. The character is a ${gender} who likes ${Q6Prompt} and going to ${Q3Prompt} , and dreams of visiting ${Q5Prompt}. The background is related to ${Q5Prompt}. Make it fun in anime style art.`;
+                prompt = `Create an anime-style image description. The character is a ${gender} who likes ${Q6Prompt} and going to ${Q3Prompt} , and dreams of visiting ${Q7Prompt}. The background is related to ${Q5Prompt}. Make it fun in anime style art.`;
             }
         }
 
         return prompt;
     }
 
-    // Generalized function to call OpenAI API
-    async function callOpenAIAPI(type, gender, Q3Prompt, Q4Prompt, Q5Prompt, Q6Prompt, Q7Prompt, language) {
-        const prompt = await generatePrompt(type, gender, Q3Prompt, Q4Prompt, Q5Prompt, Q6Prompt, Q7Prompt, language);
 
-        console.log('Sending prompt to API:', {
-            prompt,
-            language
-        }); // Ensure language is logged
+    // Generalized function to call OpenAI API
+    async function callOpenAIAPI(type, gender, Q4Prompt, Q5Prompt, advice, language) {
+        const prompt = await generatePrompt(type, gender, Q4Prompt, Q5Prompt, advice, language);
+        
+        console.log('Sending prompt to API:', prompt);
 
         try {
             const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -61,16 +42,11 @@
                 },
                 body: JSON.stringify({
                     model: "gpt-4",
-                    messages: [{
-                            role: "system",
-                            content: "You are a helpful assistant."
-                        },
-                        {
-                            role: "user",
-                            content: prompt
-                        }
+                    messages: [
+                        { role: "system", content: "You are a helpful assistant." },
+                        { role: "user", content: prompt }
                     ],
-                    max_tokens: (type === 'headline') ? 50 : 100,
+                    max_tokens: (type === 'headline') ? 50 : 100, // Adjust token limit based on type
                     temperature: 0.7
                 })
             });
@@ -127,4 +103,3 @@
     window.callOpenAIAPI = callOpenAIAPI;
     window.generateAnimeImage = generateAnimeImage;
 })();
-</script>
