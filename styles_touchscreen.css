@@ -292,7 +292,7 @@
     #emailContainer {
         position: relative;
         padding: 3% 0;
-        margin: 3% 0;
+        margin: 0;
         top: 50%;
         width: 80%;
         z-index: 5;
@@ -310,13 +310,13 @@
         position: relative;
         width: 80%;
         padding: 3% 3%;
-        margin: 3% 0;
+        margin: 0;
         top: 70%;
         z-index: 5;
     }   
     
     #buttonContainer button {
-        margin: 3% 0;
+        margin: 0;
         z-index: 5;
     }
 }
