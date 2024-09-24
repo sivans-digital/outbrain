@@ -1,5 +1,5 @@
 (function () {
-    const OPENAI_API_KEY = '---'; // ADD API KEY
+    const OPENAI_API_KEY = NEKO_CREATOR; // ADD API KEY
 
     // Generalized function to generate prompts based on type (headline/anime)
     async function generatePrompt(type, gender, Q3Prompt, Q4Prompt, Q5Prompt, Q6Prompt, Q7Prompt, language) {
