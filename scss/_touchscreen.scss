@@ -68,7 +68,7 @@
 
     /* ------------------------ TEXT for TOUCHSCREEN ------------------------ */
 
-    h1 {
+    label.title {
         font-family: 'Audiowide', 'Impact', cursive;
         text-transform: uppercase;
         color: var(--main-color);
@@ -117,7 +117,7 @@
         text-align: center;
     }
 
-    #page3 h1 {
+    #page3 label {
         top: 15vh;
         font-weight: bolder;
         left: 50%;
@@ -273,12 +273,13 @@
 
     #headline {
         position: absolute;
-        top: 68%;
+        top: 70%;
         text-align: left;
         font-size: 3vw;
         width: 90%;
         font-family: Avenir, Arial, sans-serif;
         color: white;
+        font-size: 17px;
     }
 
     #cardLogo {
@@ -316,7 +317,6 @@
     }   
     
     #buttonContainer button {
-        margin: 3% 0;
         z-index: 5;
     }
 }

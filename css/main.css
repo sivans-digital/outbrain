@@ -1,0 +1,1062 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Comfortaa:400,700,300);
+:root {
+  --main-color: #EE6513;
+}
+
+body {
+  font-family: "Sofia Pro", "Arial", sans-serif;
+  background-color: #f7f7f7;
+  color: #1B2652;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/BG.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* LOADER */
+.container {
+  text-align: center;
+  background-color: white;
+  overflow: hidden;
+}
+
+.box {
+  display: inline-block;
+  height: 200px;
+  width: 100%;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+#pageLoading {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.loader1 {
+  position: relative;
+  height: 80px;
+  width: 80px;
+  border-radius: 80px;
+  border: 3px solid var(--main-color);
+  top: calc(50% - 43px);
+  left: calc(50% - 43px);
+  transform-origin: 50% 50%;
+  animation: loader1 3s linear infinite;
+}
+
+.loader1:after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 20px;
+  width: 11px;
+  height: 11px;
+  border-radius: 10px;
+  background-color: var(--main-color);
+  /* Remove 'solid' */
+}
+
+@keyframes loader1 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/*KEYBOARD*/
+#keyboard {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  padding: 5px;
+  background-color: #1B2652;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+  border-radius: 5px;
+  /* Optional: add some border radius to make it look better */
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.key {
+  padding: 15px;
+  margin: 2px;
+  /* Add a small margin to ensure keys don’t touch each other */
+  background-color: var(--main-color);
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex: 1;
+  /* Make the keys flexible to fill the row */
+  text-align: center;
+  box-sizing: border-box;
+  /* Ensure padding and border are included in the width/height */
+  white-space: pre-wrap;
+}
+
+.key:active {
+  background-color: var(--main-color);
+}
+
+*,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+svg {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  display: inline-block;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.page.active {
+  display: flex;
+}
+
+/* ---------------------------------- Media query for DESKTOP ---------------------------------- */
+@media (max-width: 3000px) {
+  #app {
+    width: 100%;
+    max-width: 500px;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+  }
+  #header {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 90%;
+    padding-bottom: 20px;
+    flex-shrink: 0;
+  }
+  #header img {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+  }
+  #logoContainer {
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: auto;
+    /* Initially hidden */
+  }
+  #teamLogo {
+    width: 100%;
+    height: auto;
+    margin: auto;
+  }
+  #content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  #pageLast #card {
+    margin: auto;
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  /* ------------------------ TEXT for DESKTOP ------------------------ */
+  h1.title {
+    top: 5vh;
+  }
+  .title {
+    font-family: "Audiowide", "Impact", cursive;
+    text-transform: uppercase;
+    color: var(--main-color);
+    position: absolute;
+    top: 15vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(28px, 4vw, 36px);
+    width: 85%;
+    text-align: center;
+    line-height: 1;
+    box-sizing: border-box;
+  }
+  #page3 label.title {
+    top: 15vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(28px, 4vw, 36px);
+    width: 80%;
+    text-align: center;
+    line-height: 1;
+  }
+  h2 {
+    font-size: 1.5rem;
+    color: #1B2652;
+    margin-bottom: 20px;
+    width: 80%;
+  }
+  h3 {
+    color: #1B2652;
+    font-size: clamp(12px, 2vw, 18px);
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    top: 2%;
+  }
+  h6 {
+    font-size: clamp(12px, 1.5vw, 18px);
+    color: #1B2652;
+    position: absolute;
+    top: 25vh;
+    width: 80%;
+  }
+  p {
+    color: #1B2652;
+    top: 5%;
+    font-size: clamp(14px, 2vw, 24px);
+    width: 80%;
+    text-align: center;
+  }
+  button {
+    font-family: "Audiowide", "Impact", cursive;
+    text-transform: uppercase;
+    margin: 10px 0;
+    width: 50%;
+    display: block;
+    padding: 3% 0;
+    font-size: clamp(12px, 3vw, 20px);
+    font-weight: bolder;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  #page2 button {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: var(--main-color);
+    color: white;
+    font-size: clamp(16px, 3vw, 26px);
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    z-index: 10;
+  }
+  #page9 h3 {
+    align-items: center;
+    text-align: center;
+    font-size: clamp(16px, 3vw, 26px);
+  }
+  /* Input Fields */
+  input {
+    background-color: rgba(217, 217, 217, 0.65);
+    color: black;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+    width: 50%;
+    padding: 3% 0;
+    font-size: clamp(12px, 3vw, 20px);
+    transition: all 0.3s ease-in-out;
+  }
+  input:focus-visible {
+    outline: unset;
+    background-color: #d9d9d9;
+  }
+  /* Camera Capture Styling */
+  #videoContainer {
+    position: relative;
+    top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+  #countdownOverlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(27, 38, 82, 0.5);
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    border-radius: 15px;
+  }
+  /* ------------------------ CARD STYLES for DESKTOP ------------------------ */
+  #card {
+    width: 40%;
+    max-width: 275px;
+    aspect-ratio: 822/1122;
+    background-color: var(--main-color);
+    border-radius: 15px;
+    box-shadow: 0 0px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 30px auto;
+    color: white;
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #cardName {
+    text-transform: uppercase;
+    position: absolute;
+    top: 3%;
+    left: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: "Audiowide", "Impact", cursive;
+  }
+  #generatedImage {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  #tagline {
+    position: absolute;
+    top: 64%;
+    text-transform: uppercase;
+    font-size: clamp(10px, 1vw, 16px);
+    color: #FFEF9D;
+    font-family: "Avenir", Arial, sans-serif;
+    text-align: left;
+  }
+  #headline {
+    position: absolute;
+    top: 70%;
+    text-align: left;
+    font-size: clamp(16px, 3vw, 26px);
+    width: 90%;
+    font-family: "Avenir", Arial, sans-serif;
+    color: white;
+    font-size: 14px;
+  }
+  #cardLogo {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 25%;
+    height: auto;
+  }
+  #emailContainer {
+    position: relative;
+    padding: 3% 0;
+    top: 50%;
+    z-index: 5;
+  }
+  #buttonContainer button {
+    position: relative;
+    width: 80%;
+    padding: 3% 3%;
+    margin-top: 25%;
+    top: 65%;
+    z-index: 5;
+  }
+}
+/* ---------------------------------- Media query for TOUCHSCREEN ---------------------------------- */
+@media (min-width: 1080px) and (min-height: 1920px) {
+  #app {
+    width: 100%;
+    max-width: 500px;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+  }
+  #header {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 90%;
+    padding-bottom: 20px;
+    flex-shrink: 0;
+  }
+  #header img {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+  }
+  #logoContainer {
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: auto;
+    display: none; /* Initially hidden */
+  }
+  #teamLogo {
+    width: 100%;
+    height: auto;
+  }
+  #content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  #pageLast #card {
+    margin: auto;
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  /* ------------------------ TEXT for TOUCHSCREEN ------------------------ */
+  label.title {
+    font-family: "Audiowide", "Impact", cursive;
+    text-transform: uppercase;
+    color: var(--main-color);
+    position: absolute;
+    top: 15vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(28px, 6vw, 48px);
+    width: 80%;
+    text-align: center;
+    line-height: 1;
+    box-sizing: border-box;
+  }
+  h2 {
+    font-size: 1.5rem;
+    color: #1B2652;
+    margin-bottom: 20px;
+    width: 80%;
+  }
+  h3 {
+    color: #1B2652;
+    font-size: clamp(12px, 2vw, 18px);
+    margin: 10px 0;
+    padding: 1vh;
+    width: 80%;
+    text-align: center;
+    position: relative;
+    top: 2%;
+  }
+  h6 {
+    font-size: clamp(16px, 2vw, 26px);
+    color: #1B2652;
+    position: absolute;
+    top: 25vh;
+    width: 80%;
+  }
+  p {
+    color: #1B2652;
+    top: 5%;
+    font-size: clamp(14px, 2vw, 24px);
+    width: 80%;
+    text-align: center;
+  }
+  #page3 label {
+    top: 15vh;
+    font-weight: bolder;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(28px, 4vw, 36px);
+    width: 80%;
+    text-align: center;
+    line-height: 1;
+  }
+  button {
+    font-family: "Audiowide", "Impact", cursive;
+    text-transform: uppercase;
+    margin: 3% 0;
+    width: 50%;
+    display: block;
+    padding: 3% 0;
+    font-size: 2.5vw;
+    font-weight: bolder;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  #page2 button {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: var(--main-color);
+    color: white;
+    font-size: clamp(16px, 3vw, 26px);
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    z-index: 10;
+  }
+  #page9 h3 {
+    align-items: center;
+    text-align: center;
+    font-size: clamp(16px, 3vw, 26px);
+  }
+  /* Input Fields */
+  input {
+    background-color: #D9D9D9;
+    color: black;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+    width: 50%;
+    padding: 3% 0;
+    font-size: clamp(12px, 3vw, 20px);
+  }
+  /* Camera Capture Styling */
+  #videoContainer {
+    position: relative;
+    top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+  #countdownOverlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(27, 38, 82, 0.5);
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    border-radius: 15px;
+  }
+  /* ------------------------ CARD STYLES for TOUCHSCREEN ------------------------ */
+  #card {
+    width: 50%;
+    max-width: 450px;
+    aspect-ratio: 822/1122;
+    background-color: var(--main-color);
+    border-radius: 15px;
+    box-shadow: 0 0px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 30px auto;
+    color: white;
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #cardName {
+    text-transform: uppercase;
+    position: absolute;
+    top: 3%;
+    left: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: "Audiowide", "Impact", cursive;
+  }
+  #generatedImage {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  #tagline {
+    position: absolute;
+    top: 64%;
+    text-transform: uppercase;
+    font-size: 1.5vw;
+    color: #FFEF9D;
+    font-family: Avenir, Arial, sans-serif;
+    text-align: left;
+  }
+  #headline {
+    position: absolute;
+    top: 70%;
+    text-align: left;
+    font-size: 3vw;
+    width: 90%;
+    font-family: Avenir, Arial, sans-serif;
+    color: white;
+    font-size: 17px;
+  }
+  #cardLogo {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 25%;
+    height: auto;
+  }
+  #emailContainer {
+    position: relative;
+    padding: 3% 0;
+    margin: 3% 0;
+    top: 50%;
+    width: 80%;
+    z-index: 5;
+  }
+  #emailContainer input {
+    position: relative;
+    padding: 3% 0;
+    top: 50%;
+    width: 80%;
+    z-index: 5;
+  }
+  #buttonContainer {
+    position: relative;
+    width: 80%;
+    padding: 3% 3%;
+    margin: 3% 0;
+    top: 70%;
+    z-index: 5;
+  }
+  #buttonContainer button {
+    z-index: 5;
+  }
+}
+.TnCnext {
+  background-color: #9C9C9C; /* Default disabled color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: not-allowed;
+  transition: background-color 0.3s ease;
+}
+
+.TnCnext:enabled {
+  cursor: pointer;
+}
+
+/* ---------------------------------- Media query for DESKTOP ---------------------------------- */
+@media (max-width: 3000px) {
+  #page1B label.title {
+    top: 15%; /* Adjust this value based on how high you want the h1 */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(28px, 4vw, 36px);
+    line-height: 1;
+    text-align: center;
+  }
+  #page1B h3 {
+    color: #1B2652;
+    text-align: left;
+    font-weight: 300;
+    width: 80%;
+    font-size: clamp(14px, 2vw, 20px);
+    margin-top: 3vh;
+  }
+  #page1B p {
+    color: #1B2652;
+    text-align: left;
+    font-weight: 300;
+    top: 5%;
+    text-align: left;
+    font-size: clamp(10px, 1.5vw, 16px);
+    margin-bottom: 20px;
+    width: 80%;
+  }
+  #page1B .checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10%;
+  }
+  #page1B .checkbox-container label {
+    margin-left: 10px;
+    font-size: clamp(10px, 2vw, 16px);
+    font-weight: 700;
+    color: #1B2652;
+    cursor: pointer;
+    line-height: 1;
+    margin-top: 5%;
+  }
+  #page1B .checkbox-container input[type=checkbox] {
+    width: 1.5vw;
+    height: 1.5vw;
+    margin: 0;
+    vertical-align: middle;
+    margin-top: 5%;
+  }
+  #page1B button {
+    font-family: "Audiowide", cursive;
+    text-transform: uppercase;
+    margin: 10px 0;
+    width: 50%;
+    display: block;
+    padding: 3% 0;
+    font-size: clamp(12px, 2vw, 20px);
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 5%;
+  }
+}
+/* ---------------------------------- Media query for TOUCHSCREEN ---------------------------------- */
+@media (min-width: 1080px) and (min-height: 1920px) {
+  #page1B label.title {
+    font-size: clamp(28px, 6vw, 48px);
+  }
+  #page1B h3 {
+    color: #1B2652;
+    text-align: left;
+    font-weight: 300;
+    margin-bottom: 20px;
+    width: 80%;
+    font-size: clamp(16px, 5vw, 28px);
+  }
+  #page1B p {
+    color: #1B2652;
+    text-align: left;
+    font-size: clamp(12px, 3vw, 20px);
+    margin-bottom: 20px;
+    width: 80%;
+  }
+  #page1B .checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 5%;
+  }
+  #page1B .checkbox-container label {
+    margin-left: 10px;
+    font-size: clamp(16px, 5vw, 28px);
+    font-weight: 300;
+    color: #1B2652;
+    cursor: pointer;
+    line-height: 1;
+    margin-top: 5%;
+  }
+  #page1B .checkbox-container input[type=checkbox] {
+    width: 1.5vw;
+    height: 1.5vw;
+    margin: 0;
+    vertical-align: middle;
+    margin-top: 5%;
+  }
+  #page1B button {
+    font-family: "Audiowide", cursive;
+    text-transform: uppercase;
+    width: 50%;
+    display: block;
+    padding: 3% 0;
+    font-size: clamp(12px, 2vw, 20px);
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 10%;
+  }
+}
+#page1 {
+  padding: 2vh 0;
+  height: 100%;
+  margin: 0px;
+}
+
+#page1.active ~ #header {
+  display: none;
+}
+
+#page1.active ~ #logo {
+  display: none;
+}
+
+/* ---------------------------------- Media query for DESKTOP ---------------------------------- */
+@media (max-width: 3000px) {
+  #app {
+    max-width: 600px;
+    height: 90%;
+    overflow: hidden;
+  }
+  #page1 label {
+    font-family: "Audiowide", cursive;
+    text-transform: uppercase;
+    color: var(--main-color);
+    position: absolute;
+    top: 4vh;
+    width: 80%;
+    font-size: clamp(16px, 4vw, 28px);
+    margin-bottom: 2vh;
+    line-height: 1.2;
+    text-align: center;
+  }
+  #page1 h3 {
+    width: 80%;
+    font-size: clamp(12px, 2.5vw, 20px);
+    position: absolute;
+    top: 12vh;
+    text-align: center;
+    margin-top: 2vh;
+    line-height: 1.5;
+  }
+  .team-selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    position: relative;
+  }
+  .team-card {
+    width: 250px;
+    margin: 15px -25px;
+    position: relative;
+    top: 7.5vh;
+    border: 0;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+  }
+  .team-card img {
+    width: 100%;
+  }
+  .team-card:first-child {
+    transform: rotate(-10deg);
+  }
+  .team-card:last-child {
+    transform: rotate(10deg);
+  }
+  .team-card.selected {
+    transform: scale(1.1) rotate(0deg);
+    z-index: 2;
+    box-shadow: 0 0 20px 10px rgb(255, 239, 0);
+    border-radius: 15px;
+  }
+  .team-card:first-child {
+    transform: rotate(-10deg);
+  }
+  .team-card:last-child {
+    transform: rotate(10deg);
+  }
+  .team-card.selected {
+    transform: scale(1.1) rotate(0deg);
+    z-index: 2;
+    box-shadow: 0 0 20px 10px rgb(255, 239, 0);
+    border-radius: 15px;
+  }
+  .language-selection {
+    display: flex;
+    justify-content: center;
+    gap: 20%; /* Add 5% space between language buttons */
+    margin-bottom: 5%; /* Ensure 5% space from the bottom */
+  }
+  .lang-button {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    font-size: clamp(12px, 2.5vw, 20px);
+    position: relative;
+    top: 10vh;
+    background-color: #1B2652;
+    color: white;
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    z-index: 10;
+  }
+}
+/* ---------------------------------- Media query for TOUCHSCREEN ---------------------------------- */
+@media (min-width: 1080px) and (min-height: 1920px) {
+  #app {
+    max-width: 900px; /* Limit app container width to 900px for vertical layout */
+    height: 80%;
+  }
+  #page1 label {
+    font-family: "Audiowide", cursive;
+    text-transform: uppercase;
+    color: var(--main-color);
+    position: absolute;
+    top: 5vh;
+    width: 80%;
+    font-size: clamp(28px, 6vw, 48px);
+    margin-bottom: 2vh;
+    line-height: 1.2;
+    text-align: center;
+  }
+  #page1 h3 {
+    width: 80%;
+    font-size: clamp(18px, 4vw, 32px);
+    position: absolute;
+    top: 10vh;
+    text-align: center;
+    margin-top: 2vh;
+    line-height: 1.5;
+  }
+  .team-selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    position: relative;
+  }
+  .team-card {
+    width: 400px;
+    margin: 15px -25px;
+    position: relative;
+    top: 3vh;
+    border: 0;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+  }
+  .team-card img {
+    width: 100%;
+  }
+  .team-card:first-child {
+    transform: rotate(-10deg);
+  }
+  .team-card:last-child {
+    transform: rotate(10deg);
+  }
+  .team-card.selected {
+    transform: scale(1.1) rotate(0deg);
+    z-index: 2;
+    box-shadow: 0 0 20px 10px rgb(255, 239, 0);
+    border-radius: 15px;
+  }
+  .team-card:first-child {
+    transform: rotate(-10deg);
+  }
+  .team-card:last-child {
+    transform: rotate(10deg);
+  }
+  .team-card.selected {
+    transform: scale(1.1) rotate(0deg);
+    z-index: 2;
+    box-shadow: 0 0 20px 10px rgb(255, 239, 0);
+    border-radius: 15px;
+  }
+  .language-selection {
+    display: flex;
+    justify-content: center;
+    gap: 20%; /* Add 5% space between language buttons */
+    margin-bottom: 5%; /* Ensure 5% space from the bottom */
+  }
+  .lang-button {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    font-size: clamp(16px, 4vw, 32px);
+    position: relative;
+    top: 10vh;
+    background-color: #1B2652;
+    color: white;
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    z-index: 10;
+  }
+}

@@ -1,0 +1,161 @@
+.TnCnext {
+    background-color: #9C9C9C; /* Default disabled color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: not-allowed;
+    transition: background-color 0.3s ease;
+}
+
+.TnCnext:enabled {
+    cursor: pointer;
+}
+
+/* ---------------------------------- Media query for DESKTOP ---------------------------------- */
+
+@media (max-width: 3000px) {
+
+#page1B label.title {
+    top: 15%; /* Adjust this value based on how high you want the h1 */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(28px, 4vw, 36px);
+    line-height: 1;
+    text-align: center;
+}
+
+#page1B h3 {
+    color: #1B2652;
+    text-align: left;
+    font-weight: 300;
+    width: 80%;
+    font-size: clamp(14px, 2vw, 20px);
+    margin-top: 3vh;
+}
+
+#page1B p {
+    color: #1B2652;
+    text-align: left;
+    font-weight: 300;
+    top: 5%;
+    text-align: left;
+    font-size: clamp(10px, 1.5vw, 16px);
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+#page1B .checkbox-container {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+#page1B .checkbox-container label {
+    margin-left: 10px;
+    font-size: clamp(10px, 2vw, 16px);
+    font-weight: 700;
+    color: #1B2652;
+    cursor: pointer;
+    line-height: 1; 
+    margin-top: 5%;
+}
+
+#page1B .checkbox-container input[type="checkbox"] {
+    width: 1.5vw;
+    height: 1.5vw;
+    margin: 0;
+    vertical-align: middle;
+    margin-top: 5%;
+}
+
+#page1B button {
+    font-family: 'Audiowide', cursive;
+    text-transform: uppercase;
+    margin: 10px 0;
+    width: 50%;
+    display: block;
+    padding: 3% 0;;
+    font-size: clamp(12px, 2vw, 20px);
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 5%;
+}
+
+
+}
+
+/* ---------------------------------- Media query for TOUCHSCREEN ---------------------------------- */
+
+@media (min-width: 1080px) and (min-height: 1920px) {
+
+#page1B label.title {
+    font-size: clamp(28px, 6vw, 48px);
+}
+
+#page1B h3 {
+    color: #1B2652;
+    text-align: left;
+    font-weight: 300;
+    margin-bottom: 20px;
+    width: 80%;
+    font-size: clamp(16px, 5vw, 28px);
+}
+
+
+#page1B p {
+    color: #1B2652;
+    text-align: left;
+    font-size: clamp(12px, 3vw, 20px);
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+#page1B .checkbox-container {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+#page1B .checkbox-container label {
+    margin-left: 10px;
+    font-size: clamp(16px, 5vw, 28px);
+    font-weight: 300;
+    color: #1B2652;
+    cursor: pointer;
+    line-height: 1;
+    margin-top: 5%;
+}
+
+#page1B .checkbox-container input[type="checkbox"] {
+    width: 1.5vw;
+    height: 1.5vw;
+    margin: 0;
+    vertical-align: middle;
+    margin-top: 5%;
+}
+
+#page1B button {
+    font-family: 'Audiowide', cursive;
+    text-transform: uppercase;
+    width: 50%;
+    display: block;
+    padding: 3% 0;
+    font-size: clamp(12px, 2vw, 20px);
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 10%;
+}
+}

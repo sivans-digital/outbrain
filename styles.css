@@ -364,6 +364,7 @@ svg{
         border-radius: 15px;
     }
 
+
     /* ------------------------ CARD STYLES for DESKTOP ------------------------ */
 
     #card {
@@ -408,7 +409,7 @@ svg{
         position: absolute;
         top: 64%;
         text-transform: uppercase;
-        font-size: clamp(10px, 0.75vw, 14px);
+        font-size: clamp(10px, 1vw, 16px);
         color: #FFEF9D;
         font-family: Avenir, Arial, sans-serif;
         text-align: left;
@@ -418,7 +419,7 @@ svg{
         position: absolute;
         top: 68%;
         text-align: left;
-        font-size: clamp(12px, 1.5vw, 20px);
+        font-size: clamp(16px, 3vw, 26px);
         width: 90%;
         font-family: Avenir, Arial, sans-serif;
         color: white;
