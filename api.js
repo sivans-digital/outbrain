@@ -1,5 +1,5 @@
 (function () {
-    const OPENAI_API_KEY = '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'; 
+    const OPENAI_API_KEY = '---'; // ADD API KEY
 
     // Generalized function to generate prompts based on type (headline/anime)
     async function generatePrompt(type, gender, Q3Prompt, Q4Prompt, Q5Prompt, Q6Prompt, Q7Prompt, language) {
@@ -7,19 +7,19 @@
 
         if (type === 'headline') {
             if (language === 'ja') {
-                prompt = `カードのために、短くて楽しくキャッチーな見出しを作成してください。見出しの主人公であるユーザーは、${Q3Prompt}に行くのが好きです。ユーザーは${Q4Prompt}が得意で、${Q6Prompt}が好きです。ユーザーの夢は${Q7Prompt}と${Q5Prompt}を訪れることです。魅力的でクリエイティブにしてください。`;
+                prompt = `プレイングカード用に、短くて楽しくキャッチーな見出しを作成してください。この見出しの主人公であるユーザーは、${Q3Prompt}に行くのが好きです。ユーザーは${Q4Prompt}が得意で、${Q6Prompt}が好き、夢は${Q5Prompt}を訪れることです。クリエイティブで、短く、クリックしたくなるような見出しにしてください。見出しは日本語で返してください。`;
             } else {
-                prompt = `Create a short, fun and catchy headline for a card. The user, the hero of this headline, likes to go to ${Q3Prompt}. The user is good at ${Q4Prompt}, likes ${Q6Prompt}, and their dream is to visit ${Q7Prompt} and ${Q5Prompt}. Make it engaging and creative.`;
+                prompt = `Create a short, fun and catchy headline for a playing card. The user, the hero of this headline, likes to go to ${Q3Prompt}. The user is good at ${Q4Prompt}, likes ${Q6Prompt}, and their dream is to visit ${Q5Prompt}. Make it creative, short and clickbait.`;
             }
         } else if (type === 'anime') {
             if (gender === 'other') {
                 // Generate a mythical creature instead of a human
                 const mythicalCreatures = ['phoenix', 'unicorn', 'dragon', 'griffin', 'wolf'];
                 const selectedCreature = mythicalCreatures[Math.floor(Math.random() * mythicalCreatures.length)];
-                prompt = `Create an anime-style image description. The character is a ${selectedCreature} who likes to go to ${Q3Prompt}, is good at ${Q4Prompt}, likes ${Q6Prompt}, and dreams of visiting ${Q7Prompt} and ${Q5Prompt}. Make it fun in anime style art.`;
+                prompt = `Create an anime-style image description. The character is a ${selectedCreature} wwho likes ${Q6Prompt} and going to ${Q3Prompt} , and dreams of visiting ${Q7Prompt}. The background is related to ${Q5Prompt}. Make it fun in anime style art.`;
             } else {
                 // Generate a human character
-                prompt = `Create an anime-style image description. The character is a ${gender} who likes to go to ${Q3Prompt}, is good at ${Q4Prompt}, likes ${Q6Prompt}, and dreams of visiting ${Q7Prompt} and ${Q5Prompt}. Make it fun in anime style art.`;
+                prompt = `Create an anime-style image description. The character is a ${gender} who likes ${Q6Prompt} and going to ${Q3Prompt} , and dreams of visiting ${Q7Prompt}. The background is related to ${Q5Prompt}. Make it fun in anime style art.`;
             }
         }
 
