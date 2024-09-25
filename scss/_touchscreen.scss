@@ -1,0 +1,322 @@
+/* ---------------------------------- Media query for TOUCHSCREEN ---------------------------------- */
+
+@media (min-width: 1080px) and (min-height: 1920px) {
+
+    #app {
+        width: 100%;
+        max-width: 500px;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
+        box-shadow: 0 0px 20px rgba(0, 0, 0, 0.2);
+        background-color: white;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    #header {
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        width: 90%;
+        padding-bottom: 20px;
+        flex-shrink: 0;
+    }
+
+    #header img {
+        width: 50%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    #logoContainer {
+        position: absolute;
+        top: 3%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px;
+        height: auto;
+        display: none;  /* Initially hidden */
+    }
+
+    #teamLogo {
+        width: 100%;
+        height: auto;
+    }
+
+    #content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+
+    #pageLast #card {
+        margin: auto;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    /* ------------------------ TEXT for TOUCHSCREEN ------------------------ */
+
+    h1 {
+        font-family: 'Audiowide', 'Impact', cursive;
+        font-weight: bolder;
+        text-transform: uppercase;
+        color: var(--main-color);
+        position: absolute;
+        top: 15vh;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: clamp(28px, 6vw, 48px);
+        width: 80%;
+        text-align: center;
+        line-height: 1;
+        box-sizing: border-box;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        color: #1B2652;
+        margin-bottom: 20px;
+        width: 80%;
+    }
+
+    h3 {
+        color: #1B2652;
+        font-size: clamp(12px, 2vw, 18px);
+        margin: 10px 0;
+        padding: 1vh;
+        width: 80%;
+        text-align: center;
+        position: relative;
+        top: 2%;
+    }
+
+    h6 {
+        font-size: clamp(16px, 2vw, 26px);
+        color: #1B2652;
+        position: absolute;
+        top: 25vh;
+        width: 80%;
+    }
+
+    p {
+        color: #1B2652;
+        top: 5%;
+        font-size: clamp(14px, 2vw, 24px);
+        width: 80%;
+        text-align: center;
+    }
+
+    #page3 h1 {
+        top: 15vh;
+        font-weight: bolder;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: clamp(28px, 4vw, 36px);
+        width: 80%;
+        text-align: center;
+        line-height: 1;
+    }
+
+
+    button {
+        font-family: 'Audiowide', 'Impact', cursive;
+        text-transform: uppercase;
+        margin: 3% 0;
+        width: 50%;
+        display: block;
+        padding: 3% 0;
+        font-size: 2.5vw;
+        font-weight: bolder;
+        background-color: var(--main-color);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+
+    #page2 button {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%; 
+        flex-shrink: 0; 
+        background-color: var(--main-color);
+        color: white;
+        font-size: clamp(16px, 3vw, 26px);
+        font-weight: bolder;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        z-index: 10;
+    }
+
+    #page9 h3 {
+        align-items: center;
+        text-align: center;
+        font-size: clamp(16px, 3vw, 26px);
+    }
+
+    /* Input Fields */
+    input {
+        background-color: #D9D9D9;
+        color: black;
+        border: none;
+        border-radius: 50px;
+        text-align: center;
+        cursor: pointer;
+        width: 50%;
+        padding: 3% 0;
+        font-size: clamp(12px, 3vw, 20px);
+    }
+
+    /* Camera Capture Styling */
+    #videoContainer {
+        position: relative;
+        top: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+        width: 90%;
+        max-width: 500px;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    video {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+    }
+
+    #countdownOverlay {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(27, 38, 82, 0.5);
+        color: white;
+        font-size: 48px;
+        font-weight: bold;
+        border-radius: 15px;
+    }
+
+
+    /* ------------------------ CARD STYLES for TOUCHSCREEN ------------------------ */
+
+    #card {
+        width: 50%;
+        max-width: 450px;
+        aspect-ratio: 822 / 1122;
+        background-color: var(--main-color);
+        border-radius: 15px;
+        box-shadow: 0 0px 15px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        margin: 30px auto;
+        color: white;
+        position: absolute;
+        top: 3%;
+        left: 50%;
+        transform: translateX(-50%);
+
+    }
+
+    #cardName {
+        text-transform: uppercase;
+        position: absolute;
+        top: 3%;
+        left: 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        font-family: 'Audiowide', 'Impact', cursive;
+    }
+
+    #generatedImage {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        height: 50%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    #tagline {
+        position: absolute;
+        top: 64%;
+        text-transform: uppercase;
+        font-size: 1.5vw;
+        color: #FFEF9D;
+        font-family: Avenir, Arial, sans-serif;
+        text-align: left;
+    }
+
+    #headline {
+        position: absolute;
+        top: 68%;
+        text-align: left;
+        font-size: 3vw;
+        width: 90%;
+        font-family: Avenir, Arial, sans-serif;
+        color: white;
+    }
+
+    #cardLogo {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 25%;
+        height: auto;
+    }
+
+    #emailContainer {
+        position: relative;
+        padding: 3% 0;
+        margin: 3% 0;
+        top: 50%;
+        width: 80%;
+        z-index: 5;
+    }
+
+    #emailContainer input {
+        position: relative;
+        padding: 3% 0;
+        top: 50%;
+        width: 80%;
+        z-index: 5;
+    }
+
+    #buttonContainer {
+        position: relative;
+        width: 80%;
+        padding: 3% 3%;
+        margin: 3% 0;
+        top: 70%;
+        z-index: 5;
+    }   
+    
+    #buttonContainer button {
+        z-index: 5;
+    }
+}
